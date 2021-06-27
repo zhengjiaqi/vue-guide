@@ -1,4 +1,6 @@
 import hljs from 'highlight.js'
+import vue from 'vue-highlight.js/lib/languages/vue';
+
 
 /* highlightjs-line-numbers.js 2.6.0 | (C) 2018 Yauheni Pakala | MIT License | github.com/wcoder/highlightjs-line-numbers.js */
 /* Edited by Hakim for reveal.js; removed async timeout */
@@ -27,6 +29,8 @@ const Plugin = {
 	 * @param {Reveal} reveal the reveal.js instance
 	 */
 	init: function( reveal ) {
+		console.log('---init000---');
+		hljs.registerLanguage('vue', vue);
 
 		// Read the plugin config options and provide fallbacks
 		let config = reveal.getConfig().highlight || {};

@@ -1,0 +1,26 @@
+.slides{
+  background-image: url(../assets/xn.png);
+  background-size: 100px;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+body {
+  .reveal {
+    a {
+      color: #000;
+    }
+    .active {
+      color: #00BC81;
+    }
+    li {
+      margin: 30px 0;
+    }
+    .code-title {
+      margin-bottom: 50px;
+    }
+    iframe {
+      border: 1px solid #000;
+    }
+  }
+}

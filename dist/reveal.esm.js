@@ -1,6 +1,6 @@
 /*!
-* reveal.js 4.1.1
-* https://revealjs.com
+* reveal.js 1.0.0
+* https://github.com/zhengjiaqi/vue-guide
 * MIT licensed
 *
 * Copyright (C) 2020 Hakim El Hattab, https://hakim.se

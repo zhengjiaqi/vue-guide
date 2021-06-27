@@ -8,16 +8,1279 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
 
 		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
+		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
 	</head>
 	<body>
 		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+			<div class="slides"  data-background="assets/xn.png" data-background-size="100px" background-position="100% 100%">
+				<section>
+					<h2>The Guide of Vue.js</h2>
+					<p style="font-size: 30px;">by zhengjiaqibj</p>
+				</section>
+				<section>
+					<h2>个人简介</h2>
+					<div style="font-size: 20px; margin: 60px 0 0 300px; text-align: left;">
+						<p>姓名：郑家骐</p>
+						<p>来自：辅导研发部 课程体验团队</p>
+						<p>做的事情：直播桌面端</p>
+					</div>
+				</section>
+				<section>
+					<b style="font-size: 80px;">为什么要用Vue.js</b>
+				</section>
+				<section>
+					<img src="assets/vue.png" width="250px">
+					<div style="font-weight: bold;">
+						<p style="margin: 0;">Vue.js</p>
+						<span>The Progressive Framework</span>
+					</div>
+				</section>
+				<section data-background="assets/process.png"></section>
+				<section>
+					<h2>历史</h2>
+					<div style="font-size: 35px; margin: 60px 0 0 300px; text-align: left;">
+						<ul>
+							<li>0.x &ensp;轻量版的Angular</li>
+							<li>1.x &ensp;Object.deﬁneProperty</li>
+							<li>2.x &ensp;VirtualDom+SSR</li>
+							<li>3.x &ensp;Proxy+CompositionApi</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h2>课程大纲</h2>
+					<div style="font-size: 40px; margin: 60px 0 0 300px; text-align: left;">
+						<ul>
+							<li><a href="#/base" class="active">Vue 基础概览</a></li>
+							<li><a href="#/directive">Vue 内置指令</a></li>
+							<li><a href="#/component">组件</a></li>
+							<li><a href="#/mixin">混入</a></li>
+							<li><a href="#/plugin">插件</a></li>
+						</ul>
+					</div>
+				</section>
+				<section id="base">
+					<section>
+						<h2 class='code-title' data-id="code-title">一个简单的例子</h2>
+						<pre>
+							<code class="hljs language-xml" data-noescape data-trim data-line-numbers="|7-15|7|10-14|11|12-14|">
+									&lt;!DOCUMENT html&gt;
+									&lt;html&gt;
+									&lt;head&gt;
+										&lt;title&gt;Hello Vue&lt;/title&gt;
+									&lt;/head&gt;
+									&lt;body&gt;
+										&lt;div id="app"&gt;{{message}}&lt;/div&gt;
+										&lt;script src="https://cdn.jsdelivr.net/npm/vue@2"&gt;&lt;/script&gt;
+										&lt;script type="text/javascript"&gt;
+											const app = new Vue({
+												el: '#app',
+												data: {
+													message: 'Hello Vue!'
+												}
+											})
+										&lt;/script&gt;
+									&lt;/body&gt;
+									&lt;/html&gt;
+							</code>
+						</pre>
+					</section>
+					<section>
+						<iframe data-autoplay width="960" height="650" data-preload src="http://codesandbox.io/s/hello-vue-cbeqi?file=/index.html" frameborder="0"></iframe>
+					</section>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">el 和 template 选项</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|3-4|6|7|">
+							<script type="text/template">
+								// <div id="#app">Hello Vue</div>
+								const vm = new Vue({
+									el: '#app',
+									template: '<div class="empty"></div>'
+								})
+								// vm.$el === document.querySelector('#app')
+								// vm.$el.outerHTML === '<div class="empty"></div>'
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">data 选项</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|2-4|6|8|10-12|14-16|">
+							<script type="text/template">
+								const data = { message: 'Hello Vue!' }
+								const vm = new Vue({
+									data
+								})
+
+								vm.a === data.a // => true
+
+								vm.$data === data // => true
+
+								// 设置 property 也会影响到原始数据
+								vm.a = 2
+								data.a // => 2
+
+								// ……反之亦然
+								data.a = 3
+								vm.a // => 3
+
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">计算属性</h2>
+					<section data-auto-animate>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|6|8-15|9-11|12-14|">
+								<script type="text/template">
+									var vm = new Vue({
+										el: '#demo',
+										data: {
+											firstName: 'Foo',
+											lastName: 'Bar',
+											fullName: 'Foo Bar'
+										},
+										watch: {
+											firstName: function (val) {
+												this.fullName = val + ' ' + this.lastName
+											},
+											lastName: function (val) {
+												this.fullName = this.firstName + ' ' + val
+											}
+										}
+									})
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|7-11|">
+								<script type="text/template">
+									var vm = new Vue({
+										el: '#demo',
+										data: {
+											firstName: 'Foo',
+											lastName: 'Bar'
+										},
+										computed: {
+											fullName: function () {
+												return this.firstName + ' ' + this.lastName
+											}
+										}
+									})									
+								</script>
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">侦听器</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|3-5|6-10|13-17|19-20|">
+							<script type="text/template">
+								const vm = new Vue({
+									el: '#app',
+									data: { 
+										message: 'Hello'
+									},
+									watch: {
+										message (newVal, oldVal) {
+											console.log('message will change to: ', newVal);
+										}
+									}
+								});
+								
+								// 使用命令式的 vm.$watch api
+								// 键路径
+								var unwatch = vm.$watch('a.b.c', function (newVal, oldVal) {
+									console.log('a.b.c will change to: ', newVal);
+								})
+
+								// 之后取消观察
+								unwatch()
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">事件处理方法</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|2|11-19|23-24|">
+							<script type="text/template">
+								<div id="example-2">
+									<button v-on:click="greet">Greet</button>
+								</div>
+
+								var example2 = new Vue({
+									el: '#example-2',
+									data: {
+										name: 'Vue.js'
+									},
+									// 在 `methods` 对象中定义方法
+									methods: {
+										greet: function (event) {
+											// `this` 在方法里指向当前 Vue 实例
+											alert('Hello ' + this.name + '!') // => 'Hello Vue.js!'
+											// `event` 是原生 DOM 事件
+											if (event) {
+												alert(event.target.tagName) // => BUTTON
+											}
+										}
+									}
+								})
+
+								// 也可以用 JavaScript 直接调用方法
+								example2.greet() // => 'Hello Vue.js!'
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">实例生命周期钩子</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers>
+							<script type="text/template">
+								const vm = new Vue({
+									// this.$el、 this.$data 未完成初始化
+									beforeCreate() {},
+									// this.$el 未完成初始化、 this.$data 完成初始化
+									created() {},
+									// this.$el、 this.$data 完成初始化, this.$el 未挂载
+									beforeMount() {},
+									// this.$el 挂载
+									mounted() {},
+									beforeUpdate() {},
+									updated() {},
+									beforeDestroy() {},
+									destroyed() {}
+								})
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<!-- <section data-auto-animate>
+						<image class="stretch" src="assets/lifecycle.png"></image>
+					</section> -->
+					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 0"></section>
+					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 85%"></section>
+				</section>
+				<section>
+					<section>
+						<h2 class='code-title' data-id="code-title">深入响应式原理</h2>
+						<ol style="font-size: 40px;">
+							<li>
+								当你把一个普通的 JavaScript 对象传入 Vue 实例作为 data 选项，Vue 将遍历此对象所有的 property，并使用 
+								<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" style="color: #DB5329;">Object.defineProperty </a>
+								把这些 property 全部转为 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects#%E5%AE%9A%E4%B9%89_getters_%E4%B8%8E_setters" style="color: #43BA84;">getter/setter</a>。
+							</li>
+							<li>
+								通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects#%E5%AE%9A%E4%B9%89_getters_%E4%B8%8E_setters" style="color: #43BA84;">getter/setter</a> 进行依赖收集与触发响应式更新。
+							</li>
+						</ol>
+					</section>
+					<section>
+						<img style="height: 600px;" src="assets/data.png">
+					</section>
+					<section>
+						<pre data-id="code-animation">
+							<code style="max-height: 600px;" class="hljs language-javascript" data-noescape data-trim data-line-numbers="|4|8-27|10|14-26|16-20|17-18|21-25|22-23|28|">
+								<script type="text/template">
+									class Vue{
+										constructor(opt){
+												this.opt = opt
+												this.observe(opt.data)
+												let root = document.querySelector(opt.el)
+												this.compile(root)
+										}
+										observe(data){ 
+											// 为响应式对象 data 里的每一个 key 绑定一个观察者对象
+												Object.keys(data).forEach(key => {
+														let obv = new Observer() 
+														// 通过闭包保存value
+														let value = data[key];
+														// 通过 getter/setter 进行依赖收集与触发响应式更新
+														Object.defineProperty(data, key, {
+																get(){
+																		// 模板首次渲染时将依赖添加至观察者对象
+																		Observer.target && obv.addSubNode(Observer.target);
+																		return val;
+																}, 
+																set(newVal){
+																		// 数据修改时触发响应式更新
+																		obv.update(newVal)
+																		val = newVal;
+																}
+														})
+												})
+												this.$data = data;
+										}
+								}
+								</script>
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<section data-auto-animate>
+						<h2 class='code-title' data-id="code-title">Vue.set 方法</h2>
+						<p style="font-size: 30px;">对于对象: Vue 无法检测 property 的添加或移除</p>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-7|9|11-13|15|">
+								<script type="text/template">
+									var vm = new Vue({
+										data:{
+											obj: {
+												a: 1
+											}
+										}
+									}) // 'vm.obj.a' 是响应式的
+									
+									vm.obj.b = 2 // 'vm.obj.b' 是非响应式的
+									
+									Vue.set(vm.obj, 'b', 2) // 响应式添加对象属性
+									vm.$set(vm.obj, 'b', 2)
+									this.$set(this.obj,'b',2)
+
+									vm.obj.b = 3 // 'vm.obj.b' 是响应式的
+									
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section data-auto-animate>
+						<h2 style="margin: 0;" class='code-title' data-id="code-title">Vue.set 方法</h2>
+						<ol style="font-size: 30px;">
+							对于数组, Vue 不能检测以下数组的变动:
+							<li style="margin: 20px 0 0 0;">直接设置一个数组项时，例如：<span style="color: #D53200;">vm.items[indexOfItem] = newValue</span></li>
+							<li style="margin: 0;">当你修改数组的长度时，例如：<span style="color: #D53200;">vm.items.length = newLength</span></li>
+						</ol>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-5|7|8|10-12|14|">
+								<script type="text/template">
+									var vm = new Vue({
+										data: {
+											items: ['a', 'b', 'c']
+										}
+									})
+
+									vm.items[1] = 'x' // 不是响应性的
+									vm.items.length = 2 // 不是响应性的
+									
+									Vue.set(vm.items, 1, 'x') // 响应式设置数组项
+									vm.$set(vm.items, 1, 'x')
+									this.set(this.items, 1, 'x')
+									
+									vm.items.splice(newLength) // 响应式修改数组长度
+									
+								</script>
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">小结</h2>
+					<ul style="margin-top: 50px; width: 80%;">
+						<li>
+							写Vue代码，其实是在写Vue的各个选项
+						</li>
+						<li style="line-height: 1.5;">
+							Vue本身是⼀个类，通过拿到各个选项，然后分别格式化成⾃⼰需要的形式，最后渲染出整个⻚⾯
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h2>课程大纲</h2>
+					<div style="font-size: 40px; margin: 60px 0 0 300px; text-align: left;">
+						<ul>
+							<li><a href="#/base">Vue 基础概览</a></li>
+							<li><a href="#/directive" class="active">Vue 内置指令</a></li>
+							<li><a href="#/component">组件</a></li>
+							<li><a href="#/mixin">混入</a></li>
+							<li><a href="#/plugin">插件</a></li>
+						</ul>
+					</div>
+				</section>
+				<section id="directive">
+					<h2 class='code-title' data-id="code-title">使用</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1|3|">
+								<script type="text/template">
+									<span v-text="msg"></span>
+									<!-- 和下面的一样 -->
+									<span>{{msg}}</span>
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<section>
+						<h2 class='code-title' data-id="code-title">v-text vs v-html</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|4|5|">
+								<script type="text/template">
+									<template>
+										<div id="app">
+											<h2>标题：{{title}}</h2>
+											<p v-text='rawHtml'></p>
+											<p v-html='rawHtml'></p>
+										</div>
+									</template>
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section>
+						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/v-html-pzx70?file=/index.html" frameborder="0"></iframe>
+					</section>	
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">v-show vs v-if</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|2|3|">
+								<script type="text/template">
+									<div id="app">
+										<h1 v-show="ok">Hello!</h1>
+										<h1 v-if="ok">Yes</h1>
+									</div>
+								</script>
+							</code>
+						</pre>
+						<div>
+							<image class="stretch" src="assets/v-show.png"></image>
+							<image class="stretch" src="assets/v-show2.png"></image>
+						</div>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">v-else and v-else-if</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers>
+								<script type="text/template">
+									<ul id="list">
+										<li v-if="type === 'A'">A</li>
+										<li v-else-if="type === 'B'">B</li>
+										<li v-else-if="type === 'C'">C</li>
+										<li v-else>Not A/B/C</li>
+									</ul>
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">v-else and v-else-if</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|2-4|6-8|10-12|14-16|">
+								<script type="text/template">
+									<ul>
+										<li v-for="item in array" :key="item.id">
+											{{ item.text }}
+										</li>
+	
+										<li v-for="(item, index) in array" :key="item.id">
+											{{ item }} {{ index }}
+										</li>
+	
+										<li v-for="(val, key) in object" :key="val.id">
+											{{ val }} {{ key }}
+										</li>
+	
+										<li v-for="(val, name, index) in object" :key="val.id">
+											{{ val }} {{ name }} {{ index }}
+										</li>
+									</ul>
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<section>
+						<h2 class='code-title' data-id="code-title">v-on</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-5|7-8|10-11|13-14|16-17|19-20|22-23|25-26|28-29|31-32|34-35|37-38|40-41|43-44|46-47">
+								<script type="text/template">
+									<!-- 方法处理器 -->
+									<button v-on:click="doThis"></button>
+
+									<!-- 动态事件 (2.6.0+) -->
+									<button v-on:[event]="doThis"></button>
+
+									<!-- 内联语句 -->
+									<button v-on:click="doThat('hello', $event)"></button>
+
+									<!-- 缩写 -->
+									<button @click="doThis"></button>
+
+									<!-- 动态事件缩写 (2.6.0+) -->
+									<button @[event]="doThis"></button>
+
+									<!-- 停止冒泡 -->
+									<button @click.stop="doThis"></button>
+
+									<!-- 阻止默认行为 -->
+									<button @click.prevent="doThis"></button>
+
+									<!-- 阻止默认行为，没有表达式 -->
+									<form @submit.prevent></form>
+
+									<!--  串联修饰符 -->
+									<button @click.stop.prevent="doThis"></button>
+
+									<!-- 键修饰符，键别名 -->
+									<input @keyup.enter="onEnter">
+
+									<!-- 键修饰符，键代码 -->
+									<input @keyup.13="onEnter">
+
+									<!-- 点击回调只会触发一次 -->
+									<button v-on:click.once="doThis"></button>
+
+									<!-- 对象语法 (2.4.0+) -->
+									<button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
+
+									<!--在子组件上监听自定义事件 (当子组件触发“my-event”时将调用事件处理器)：-->
+									<my-component @my-event="handleThis"></my-component>
+
+									<!-- 内联语句 -->
+									<my-component @my-event="handleThis(123, $event)"></my-component>
+
+									<!-- 组件中的原生事件 -->
+									<my-component @click.native="onClick"></my-component>
+
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2 class='code-title' data-id="code-title">v-on 修饰符</h2>
+						<image style="height: 400px;" src="assets/modifier.png"></image>
+					</section>						
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">v-bind</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-5|7-8|10-11|13-14|16-19|21-23|25-26|28-29|31-32|34-35|">
+								<script type="text/template">
+									<!-- 绑定一个 attribute -->
+									<img v-bind:src="imageSrc">
+
+									<!-- 动态 attribute 名 (2.6.0+) -->
+									<button v-bind:[key]="value"></button>
+
+									<!-- 缩写 -->
+									<img :src="imageSrc">
+
+									<!-- 动态 attribute 名缩写 (2.6.0+) -->
+									<button :[key]="value"></button>
+
+									<!-- 内联字符串拼接 -->
+									<img :src="'/path/to/images/' + fileName">
+
+									<!-- class 绑定 -->
+									<div :class="{ red: isRed }"></div>
+									<div :class="[classA, classB]"></div>
+									<div :class="[classA, { classB: isB, classC: isC }]">
+
+									<!-- style 绑定 -->
+									<div :style="{ fontSize: size + 'px' }"></div>
+									<div :style="[styleObjectA, styleObjectB]"></div>
+
+									<!-- 绑定一个全是 attribute 的对象 -->
+									<div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
+
+									<!-- 通过 prop 修饰符绑定 DOM attribute -->
+									<div v-bind:text-content.prop="text"></div>
+
+									<!-- prop 绑定。“prop”必须在 my-component 中声明。-->
+									<my-component :prop="someThing"></my-component>
+
+									<!-- 通过 $props 将父组件的 props 一起传给子组件 -->
+									<child-component v-bind="$props"></child-component>
+
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<section>
+						<h2 class='code-title' data-id="code-title">v-model</h2>
+							<pre data-id="code-animation">
+								<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-3|6-8|10-15|">
+									<script type="text/template">
+										
+										<input v-model="message"/>
+										<textarea v-model="message"></textarea>
+										<select v-model="selected"></select>
+	
+										
+										<CustomComponent v-model="val"></CustomComponent>
+										// 等价于
+										<CustomComponent :value="val" @input="val=$event"></CustomComponent>
+	
+										// CustomComponent
+										methods:{
+											handler() {
+												this.$emit('input', this.value);
+											}
+										}
+	
+									</script>
+								</code>
+							</pre>
+					</section>
+					<section>
+						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/v-model-zplpv" frameborder="0"></iframe>
+					</section>	
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">v-slot</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-12|3-5|">
+								<script type="text/template">
+									<!-- 具名插槽 -->
+									<base-layout>
+										<template v-slot:header>
+											Header content
+										</template>
+
+										Default slot content
+
+										<template v-slot:footer>
+											Footer content
+										</template>
+									</base-layout>
+
+									<!-- 接收 prop 的具名插槽 -->
+									<infinite-scroll>
+										<template v-slot:item="slotProps">
+											<div class="item">
+												{{ slotProps.item.text }}
+											</div>
+										</template>
+									</infinite-scroll>
+
+									<!-- 接收 prop 的默认插槽，使用了解构 -->
+									<mouse-position v-slot="{ x, y }">
+									Mouse position: {{ x }}, {{ y }}
+									</mouse-position>
+
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2>课程大纲</h2>
+					<div style="font-size: 40px; margin: 60px 0 0 300px; text-align: left;">
+						<ul>
+							<li><a href="#/base">Vue 基础概览</a></li>
+							<li><a href="#/directive">Vue 内置指令</a></li>
+							<li><a href="#/component" class="active">组件</a></li>
+							<li><a href="#/mixin">混入</a></li>
+							<li><a href="#/plugin">插件</a></li>
+						</ul>
+					</div>
+				</section>
+				<section id="component">
+					<h2 class='code-title' data-id="code-title">什么是组件</h2>
+					<image style="height: 400px;" src="assets/component.png"></image>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">组件的好处</h2>
+					<ul>
+						<li class="fragment">提高开发效率</li>
+						<li class="fragment">方便重复使用</li>
+						<li class="fragment">简化调试步骤</li>
+						<li class="fragment">提升项目的可维护性</li>
+						<li class="fragment">便于协同开发</li>
+						<li class="fragment">...</li>
+					</ul>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">组件的核心选项</h2>
+					<ul>
+						<li class="fragment">模板（template）</li>
+						<li class="fragment">初始数据 (data) - 必须是一个函数</li>
+						<li class="fragment">可接受的外部参数 (props)</li>
+						<li class="fragment">方法 (methods)</li>
+						<li class="fragment">生命周期钩子函数 (lifecycle)</li>
+					</ul>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">使用组件</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-4|5-10|12-19|16-18|">
+								<script type="text/template">
+									// 全局注册组件
+									Vue.component('my-component', {
+										template: `<div>A custom component!</div>`
+									})
+									// 创建根实例
+									new Vue({
+										template: `<div>
+											<my-component></my-component>
+										</div>`
+									})
+
+									// 局部注册组件
+									const childComponent = { template: `<div>A custom component!</div>` }
+									new Vue({
+										// ...
+										components: {
+											'my-component': childComponent
+										}
+									})
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">props</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-4|6|">
+								<script type="text/template">
+									Vue.component('blog-post', {
+										props: ['title'],
+										template: '<h3>{{ title }}</h3>'
+									})
+									
+									<blog-post title="My journey with Vue"></blog-post>
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">自定义事件</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers>
+								<script type="text/template">
+									// 子组件触发事件
+									this.$emit('my-event', data)
+								</script>
+							</code>
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers>
+								<script type="text/template">
+									<my-component :my-event="handler"></my-component>
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">插槽</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-4|6-10|12-15|">
+								<script type="text/template">
+									// <navigation-link>组件
+									<a v-bind:href="url" class="nav-link">
+										<slot></slot>
+									</a>
+
+									// 使用
+									<navigation-link url="/profile">
+										<!--  任意html -->
+										Your Profile
+									</navigation-link>
+
+									// 输出
+									<a href="/profile" class="nav-link">
+										Your Profile
+									</a>
+
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">插槽后备内容</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-6|8-9|11-14|">
+								<script type="text/template">
+									<button type="submit">
+										<slot>
+											<!-- 任意html -->
+											Submit
+										</slot>
+									</button>
+									
+									<!-- 使用 -->
+									<submit-button></submit-button>
+
+									<!-- 渲染结果 -->
+									<button type="submit">
+										Submit
+									</button>
+
+								</script>
+							</code>
+						</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">具名插槽</h2>
+					<section data-auto-animate>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|4-5|8-9|12-13|">
+								<script type="text/template">
+									<!-- 定义具名插槽 -->
+									<div class="container">
+										<header>
+											<!-- 我们希望把页头放这里 -->
+											<slot name="header"></slot>
+										</header>
+										<main>
+											<!-- 我们希望把主要内容放这里 -->
+											<slot></slot>
+										</main>
+										<footer>
+											<!-- 我们希望把页脚放这里 -->
+											<slot name="footer"></slot>
+										</footer>
+									</div>									
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section data-auto-animate>
+						<pre data-id="code-animation">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|3-5|7-8|10-12|">
+								<script type="text/template">
+									<!-- 使用具名插槽 -->
+									<base-layout>
+										<template v-slot:header>
+											<h1>Here might be a page title</h1>
+										</template>
+
+										<p>A paragraph for the main content.</p>
+										<p>And another one.</p>
+
+										<template v-slot:footer>
+											<p>Here's some contact info</p>
+										</template>
+									</base-layout>
+								</script>
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">编译作用域</h2>
+					<image src="assets/slot.png"></image>
+					<pre data-id="code-animation">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers>
+							<script type="text/template">
+								<navigation-link url="/profile">
+									Clicking here will send you to: {{ url }}
+									<!--
+									这里的 `url` 会是 undefined，因为其 (指该插槽的) 内容是
+									传递给 <navigation-link> 的而不是
+									在 <navigation-link> 组件*内部*定义的。
+									-->
+								</navigation-link>
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">作用域插槽</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-6|3-5|8-17|10-12|14-16|">
+							<script type="text/template">
+								<!-- 将 user 作为 <slot> 元素的一个 attribute 绑定 -->
+								<span>
+									<slot v-bind:user="user">
+										{{ user.lastName }}
+									</slot>
+								</span>
+
+								<!-- 使用带值的 v-slot 来定义我们提供的插槽 prop 的名字 -->
+								<base-layout>
+									<template v-slot:default="slotProps">
+										{{ slotProps.user.firstName }}
+									</template>
+								
+									<template v-slot:footer="otherSlotProps">
+										...
+									</template>
+								</base-layout>								
+					
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">一个具体的例子</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-16|7-14|18-24|20-23|">
+							<script type="text/template">
+								<!-- 实现一个 <todo-list> 组件 -->
+								<ul>
+									<li
+										v-for="todo in filteredTodos"
+										v-bind:key="todo.id"
+									>
+										<!--
+										我们为每个 todo 准备了一个插槽，
+										将 `todo` 对象作为一个插槽的 prop 传入。
+										-->
+										<slot name="todo" v-bind:todo="todo">
+											<!-- 后备内容 -->
+											{{ todo.text }}
+										</slot>
+									</li>
+								</ul>		
+								
+								<!-- 自定义 todo <template> -->
+								<todo-list v-bind:todos="todos">
+									<template v-slot:todo="{ todo }">
+										<span v-if="todo.isComplete">✓</span>
+										{{ todo.text }}
+									</template>
+								</todo-list>								
+					
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">动态组件</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1|3-6|">
+							<script type="text/template">
+								<component v-bind:is="currentTabComponent"></component>
+
+								<!-- 失活的组件将会被缓存！-->
+								<keep-alive>
+									<component v-bind:is="currentTabComponent"></component>
+								</keep-alive>
+
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">异步组件</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-9|11-16|18-24|">
+							<script type="text/template">
+								// Vue组件支持异步注册，在组件需要被渲染的时候才会触发该工厂函数
+								Vue.component('async-example', function (resolve, reject) {
+									setTimeout(function () {
+										// 向 `resolve` 回调传递组件定义
+										resolve({
+											template: '<div>I am async!</div>'
+										})
+									}, 1000)
+								})			
+								
+								// 配合webpack code-splitting 和 ES2015 语法
+								Vue.component(
+									'async-webpack-example',
+									// 这个动态导入会返回一个 `Promise` 对象。
+									() => import('./my-async-component')
+								)
+
+								// 当使用局部注册时，也可以直接提供一个返回 Promise 的函数
+								new Vue({
+									// ...
+									components: {
+										'my-component': () => import('./my-async-component')
+									}
+								})
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section id="mixin">
+					<h2>课程大纲</h2>
+					<div style="font-size: 40px; margin: 60px 0 0 300px; text-align: left;">
+						<ul>
+							<li><a href="#/base">Vue 基础概览</a></li>
+							<li><a href="#/directive">Vue 内置指令</a></li>
+							<li><a href="#/component">组件</a></li>
+							<li><a href="#/mixin" class="active">混入</a></li>
+							<li><a href="#/plugin">插件</a></li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<section>
+						<h2 class='code-title' data-id="code-title">混入（mixin）</h2>
+						<p style="font-size: 20px;">混入 (mixin) 提供了一种非常灵活的方式，来分发 Vue 组件中的可复用功能。一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被“混合”进入该组件本身的选项。</p>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-11|13-16|18|">
+								<script type="text/template">
+									// 定义一个混入对象
+									var myMixin = {
+										created: function () {
+											this.hello()
+										},
+										methods: {
+											hello: function () {
+												console.log('hello from mixin!')
+											}
+										}
+									}
+	
+									// 定义一个使用混入对象的组件
+									var Component = Vue.extend({
+										mixins: [myMixin]
+									})
+	
+									var component = new Component() // => "hello from mixin!"
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2 class='code-title' data-id="code-title">全局混入</h2>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-9|11-14|">
+								<script type="text/template">
+									// 为自定义的选项 'myOption' 注入一个处理器。
+									Vue.mixin({
+										created: function () {
+											var myOption = this.$options.myOption
+											if (myOption) {
+												console.log(myOption)
+											}
+										}
+									})
+
+									new Vue({
+										myOption: 'hello!'
+									})
+									// => "hello!"
+								</script>
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">选项合并</h2>
+					<section data-auto-animate>
+						<ul>
+							<li style="margin: 0; padding-top: 70px; font-size: 30px;">data对象，递归合并，当前组件的数据优先</li>
+						</ul>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-8|10-22|12-16|18-21|">
+								<script type="text/template">
+									var mixin = {
+										data: function () {
+											return {
+												message: 'hello',
+												foo: 'abc'
+											}
+										}
+									}
+									
+									new Vue({
+										mixins: [mixin],
+										data: function () {
+											return {
+												message: 'goodbye',
+												bar: 'def'
+											}
+										},
+										created: function () {
+											console.log(this.$data)
+											// => { message: "goodbye", foo: "abc", bar: "def" }
+										}
+									})
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section data-auto-animate>
+						<ul>
+							<li style="margin: 0; padding-top: 70px; font-size: 30px;">钩子函数，合并成一个数组，混入的优先</li>
+						</ul>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-5|7-12|14-15|">
+								<script type="text/template">
+									var mixin = {
+										created: function () {
+											console.log('混入对象的钩子被调用')
+										}
+									}
+									
+									new Vue({
+										mixins: [mixin],
+										created: function () {
+											console.log('组件钩子被调用')
+										}
+									})
+									
+									// => "混入对象的钩子被调用"
+									// => "组件钩子被调用"
+									
+								</script>
+							</code>
+						</pre>
+					</section>
+					<section data-auto-animate>
+						<ul>
+							<li style="margin: 0; padding-top: 70px; font-size: 30px;">对象的选项，例如 methods、components 和 directives，将被合并为同一个对象。冲突时，当前组件优先。</li>
+						</ul>
+						<pre data-id="code-animation">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-10|12-22|24-26|">
+								<script type="text/template">
+									var mixin = {
+										methods: {
+											foo: function () {
+												console.log('foo')
+											},
+											conflicting: function () {
+												console.log('from mixin')
+											}
+										}
+									}
+									
+									var vm = new Vue({
+										mixins: [mixin],
+										methods: {
+											bar: function () {
+												console.log('bar')
+											},
+											conflicting: function () {
+												console.log('from self')
+											}
+										}
+									})
+									
+									vm.foo() // => "foo"
+									vm.bar() // => "bar"
+									vm.conflicting() // => "from self"
+								</script>
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<h2>课程大纲</h2>
+					<div style="font-size: 40px; margin: 60px 0 0 300px; text-align: left;">
+						<ul>
+							<li><a href="#/base">Vue 基础概览</a></li>
+							<li><a href="#/directive">Vue 内置指令</a></li>
+							<li><a href="#/component">组件</a></li>
+							<li><a href="#/mixin">混入</a></li>
+							<li><a href="#/plugin" class="active">插件</a></li>
+						</ul>
+					</div>
+				</section>
+				<section id="plugin">
+					<h2 class='code-title' data-id="code-title">插件功能</h2>
+					<p>插件通常用来为 Vue 添加全局功能。</p>
+					<ol>
+						<li style="font-size: 35px;" class="fragment">添加全局⽅法或属性（Vue.xx）</li>
+						<li style="font-size: 35px;" class="fragment">添加全局资源：指令/过滤器/过渡等（Vue.directive）</li>
+						<li style="font-size: 35px;" class="fragment">通过全局混⼊来添加⼀些组件选项（Vue.mixin）</li>
+						<li style="font-size: 35px;" class="fragment">添加Vue实例⽅法（Vue.prototype）</li>
+					</ol>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">使用插件</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers>
+							<script type="text/template">
+								// 调用 `MyPlugin.install(Vue)`
+								Vue.use(MyPlugin, { someOption: true })
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">开发插件</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|2-5|7-13|15-21|23-26|">
+							<script type="text/template">
+								MyPlugin.install = function (Vue, options) {
+									// 1. 添加全局方法或 property
+									Vue.myGlobalMethod = function () {
+										// 逻辑...
+									}
+								
+									// 2. 添加全局资源
+									Vue.directive('my-directive', {
+										bind (el, binding, vnode, oldVnode) {
+											// 逻辑...
+										}
+										...
+									})
+								
+									// 3. 注入组件选项
+									Vue.mixin({
+										created: function () {
+											// 逻辑...
+										}
+										...
+									})
+								
+									// 4. 添加实例方法
+									Vue.prototype.$myMethod = function (methodOptions) {
+										// 逻辑...
+									}
+								}								
+							</script>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 class='code-title' data-id="code-title">单文件组件</h2>
+					<pre data-id="code-animation">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|2-7|9-21|23-29|">
+								&lt;!-- Hello.vue --&gt;
+								&lt;template&gt;
+									&lt;div&gt;
+										&lt;p&gt;{{ greeting }} World!&lt;/p&gt;
+										&lt;OtherComponent&gt;&lt;/OtherComponent&gt;
+									&lt;/div&gt;	
+								&lt;/template&gt;
+								
+								&lt;script&gt;
+									import OtherComponent from './OtherComponent.vue'
+									export default {
+										components: {
+											OtherComponent
+										},
+										data () {
+											return {
+												greeting: 'Hello'
+											}
+										}
+									}
+								&lt;/script&gt;
+								
+								&lt;!-- scoped 提供组件作用域的css --&gt;
+								&lt;style lang="less" scoped&gt;
+									p {
+										font-size: 2em;
+										text-align: center;
+									}
+								&lt;/style&gt;
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2 style="font-size: 100px;" class='code-title' data-id="code-title">Q&A</h2>
+				</section>
+				<section>
+					<h2 data-id="code-title">课后作业</h2>
+					<ul>
+						<li>在项目中使用vue-router</li>
+						<li>封装一个Modal框，参考<a style="color: #3173CA;" href="https://antdv.com/components/modal-cn/#components-modal-demo-information-modal-dialog">Ant Design Vue</a></li>
+						<li>封装一个轮播图组件（选做），参考<a style="color: #3173CA;" href="https://github.com/zhengjiaqi/vue-light-swiper">vue-light-swiper</a></li>
+						<li>作业项目：<a style="color: #3173CA;" href="https://gerrit.zhenguanyu.com/admin/repos/nb-vue-2021">https://gerrit.zhenguanyu.com/admin/repos/nb-vue-2021</a></li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
@@ -31,7 +1294,11 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
-
+				history: true,
+				preloadIframes: true,
+				width: 960,
+				height: 700,
+				// controlsLayout: 'edges',
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
