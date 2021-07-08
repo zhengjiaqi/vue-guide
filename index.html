@@ -20,6 +20,15 @@
 				<section>
 					<h2>The Guide of Vue.js</h2>
 					<p style="font-size: 30px;">by zhengjiaqibj</p>
+					<aside class="notes">
+						各位同学大家好，欢迎来参加Vue入门这节课程，今天由我来为大家介绍一些Vue的基础知识。
+						<br/>
+						首先进行一个小调查，有没有用过Vue的同学，可以举个手。
+						<br/>
+						看来了解Vue的同学不少，那今天的内容应该比较容易理解。
+						<br/>
+						看来了解Vue的同学不多，没关系今天的内容应该比较容易理解。
+					</aside>					
 				</section>
 				<section>
 					<h2>个人简介</h2>
@@ -28,9 +37,26 @@
 						<p>来自：辅导研发部 课程体验团队</p>
 						<p>做的事情：直播桌面端</p>
 					</div>
+					<aside class="notes">
+						在正式开始之前，首先我来进行一下自我介绍。
+						<br/>
+						我的名字叫郑家骐，来自辅导研发部，课程体验团队，目前负责直播桌面端的研发。
+						<br/>
+						好，那么我们下面进入正式的主题吧。
+
+					</aside>					
 				</section>
 				<section>
 					<b style="font-size: 80px;">为什么要用Vue.js</b>
+					<aside class="notes">
+						好，首先在讲Vue之前，第一个问题，就是为什么要用Vue。
+						<br/>
+						其实可以一句话概况，就是使用Vue可以显著的提高我们的开发效率。
+						<br/>
+						还有可以提升我们的代码质量，以及后期的维护成本。
+						<br/>
+						因为我们很多时候选择一个工具，就是看能不能为我们的效率带来提升，Vue就是一个非常好的工具。
+					</aside>					
 				</section>
 				<section>
 					<img src="assets/vue.png" width="250px">
@@ -38,18 +64,76 @@
 						<p style="margin: 0;">Vue.js</p>
 						<span>The Progressive Framework</span>
 					</div>
+					<aside class="notes">
+						Vue的官方对于Vue的一个最重要的定位就是，渐进式框架。
+						<br>
+						然后说到渐进式框架的话，就会想到web里面的两个设计原则：
+						<br>
+						一个叫优雅降级，一个叫渐进增强。
+						<br>
+						优雅降级就是说，在开发的过程中先构建一个完整的功能，然后再针对低版本浏览器进行兼容。
+						<br>
+						比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。
+						<br>
+						然后渐进增强，就是说一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器优化效果、交互、追加功能达到更好的体验。
+					</aside>					
 				</section>
-				<section data-background="assets/process.png"></section>
+				<section data-background="assets/process.png">
+					<aside class="notes">
+						那换到Vue这块的话，怎么理解渐进增强呢，也就是渐进式框架呢。
+						<br>
+						可以看这张图，Vue最核心的功能在最左边，就是两点。
+						<br>
+						一点是声明式渲染，一点是组件系统。就是标红的地方。
+						<br>
+						第三层呢，就是客户端路由，在Vue中由vue-router这个扩展插件来实现。
+						<br>
+						第四层是大型状态管理，在Vue中由Vuex实现，就是对应react中的redux。
+						<br>
+						接下来是构建系统，由一系列cli工具以及Webpack插件组成，提供开发Vue所需的工程能力，比如对Vue单文件组件的支持。
+						<br>
+						最近Vue官方，配合Vue3提供了下一代前端开发与构建工具Vite，基于原生ES模块，可以极大提升开发构建速度，大家可以线下尝试一下，构建速度提升非常明显。
+						<br>
+						最后就是客户端存储，客户端可以通过将服务端数据存储在本地的，比如Local Storage或IndexedDB中，来使网站可以离线访问以及提升性能。
+						<br>
+						然后Vue就是一种分层设计，他最关心自己的最核心的两个点，就是声明式渲染和组件系统。
+						<br>
+						然后外层的功能，每层都是可选的，你可以根据自己的需要灵活选择不同的实现来完成相似的功能。
+						<br>
+						这就是Vue的渐进增强，一开始只关心最核心的两个点，上层的功能通过扩展和插件来提供。
+					</aside>
+				</section>
 				<section>
 					<h2>历史</h2>
 					<div style="font-size: 35px; margin: 60px 0 0 300px; text-align: left;">
 						<ul>
-							<li>0.x &ensp;轻量版的Angular</li>
-							<li>1.x &ensp;Object.deﬁneProperty</li>
-							<li>2.x &ensp;VirtualDom+SSR</li>
-							<li>3.x &ensp;Proxy+CompositionApi</li>
+							<li class="fragment">0.x &ensp;轻量版的Angular</li>
+							<li class="fragment">1.x &ensp;Object.deﬁneProperty</li>
+							<li class="fragment">2.x &ensp;VirtualDom+SSR</li>
+							<li class="fragment">3.x &ensp;Proxy+CompositionApi</li>
 						</ul>
 					</div>
+					<aside class="notes">
+						下面来介绍一下Vue的发展历史。
+						<br>
+						Vue最初的时候，就是一个轻量版的Angular，因为觉得Angular太重了，同时借鉴了Angular好的方面，比如模板系统。
+						<br>
+						V1版本，最大的改动就是引入了Object.deﬁneProperty，来实现了响应式的数据追踪与模板重新渲染，这个也是Vue最主要的特色。
+						<br>
+						2.0版本，主要是参照React引入了Virtual Dom，有了Virtual Dom就可以做SSR了。
+						<br>
+						3.0版本，是现在Vue正在出的一个版本，目前已经有了3.0正式版。变化主要是一个使用Proxy代替了Object.deﬁneProperty。
+						<br>
+						可以简化代码，并且能力更强可以解决一些deﬁneProperty无法解决的问题，同时性能也得到了提升。
+						<br>
+						另外一个就是CompositionApi，也就是组合式Api，类似于React hook，更便于我们抽离与封装可重用的代码段。
+						<br>
+						主要可以增加我们项目的可维护性和灵活性。
+						<br>
+						此外，3.0相较于2.0在性能与代码体积方面都有进一步的优化，非常适合移动端项目使用。
+						<br>
+						鉴于3.0相较于2.0在基础概念方面的变化不大，并且公司内部大部分使用的还是Vue2.0，我们今天讲的内容还是基于Vue2.0的版本。
+					</aside>
 				</section>
 				<section>
 					<h2>课程大纲</h2>
@@ -62,12 +146,23 @@
 							<li><a href="#/plugin">插件</a></li>
 						</ul>
 					</div>
+					<aside class="notes">
+						接下来介绍一下今天的课程大纲。
+						<br>
+						主要是5个小节，主要都是Vue的核心基础概念。
+						<br>
+						首先是Vue 基础概览，主要是Vue的一些基础配置项的说明，以及Vue响应式原理的介绍。
+						<br>
+						然后Vue 内置指令，主要是Vue模板上要用到的一些指令的介绍。
+						<br>
+						然后会重点介绍一下组件，最后还有两个点就是混入和插件。
+					</aside>
 				</section>
 				<section id="base">
 					<section>
 						<h2 class='code-title' data-id="code-title">一个简单的例子</h2>
 						<pre>
-							<code class="hljs language-xml" data-noescape data-trim data-line-numbers="|7-15|7|10-14|11|12-14|">
+							<code class="hljs language-xml" data-noescape data-trim data-line-numbers="|8|7-16|7|10-14|11|12-14|">
 									&lt;!DOCUMENT html&gt;
 									&lt;html&gt;
 									&lt;head&gt;
@@ -88,9 +183,25 @@
 									&lt;/html&gt;
 							</code>
 						</pre>
+						<aside class="notes">
+							接下来我们来看一个简单的例子吧。
+							<br>
+							首先大家可以看到使用Vue可以是非常简单的，只需要通过一个&lt;script&gt;标签，引入Vue的CDN地址，就可以使用Vue的核心功能。
+							<br>
+							然后我们定义了一个id为app的div，作为Vue实例的锚点和模板。
+							<br>
+							然后我们通过new来创建一个Vue的实例，传入一个element选择器和一个data，渲染出来的就是Hello Vue。
+						</aside>
 					</section>
 					<section>
 						<iframe data-autoplay width="960" height="650" data-preload src="http://codesandbox.io/s/hello-vue-cbeqi?file=/index.html" frameborder="0"></iframe>
+						<aside class="notes">
+							这个就是实际渲染结果的一个展示，可以看到Hello Vue已经被渲染出来了。
+							<br>
+							如果我修改data的话，可以看到渲染结果也会相应的变化。
+							<br>
+							从这里我们可以看到，使用Vue的话其实就是在new一个Vue的实例。
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -103,18 +214,33 @@
 									el: '#app',
 									template: '<div class="empty"></div>'
 								})
-								// vm.$el === document.querySelector('#app')
-								// vm.$el.outerHTML === '<div class="empty"></div>'
+								// beforeMount: this.$el === document.querySelector('#app')
+								// mounted: vm.$el.outerHTML === '<div class="empty"></div>'
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						那Vue实例的话有很多的选项。比如element和template这两个选项。
+						<br>
+						element选项指定的元素将作为vue生成Dom树的挂载点，并且在未指定template的情况下，element元素本身将作为模版被解析。
+						<br>
+						如果指定了template选项，就以template中内容作为模板进行解析。
+						<br>
+						比如中间的代码，我们首先定义了一个id为app的div，他的内容是Hello Vue。
+						<br>
+						然后我们在创建Vue实例时提供了element和template两个选项。
+						<br>
+						接下来从Vue的实例中我们可以拿到$element属性，我们会发现他在Vue dom挂载前等价于querySelector拿到的app节点。
+						<br>
+						而在Vue dom挂载后$element将变成新的通过template模板渲染的节点。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">data 选项</h2>
 					<pre data-id="code-animation">
-						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|2-4|6|8|10-12|14-16|">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|2-4|6|8|10-12|14-16|18-25|">
 							<script type="text/template">
-								const data = { message: 'Hello Vue!' }
+								const data = { a: 'Hello Vue!' }
 								const vm = new Vue({
 									data
 								})
@@ -131,12 +257,43 @@
 								data.a = 3
 								vm.a // => 3
 
+								// 推荐使用函数返回data
+								const vm = new Vue({
+									data() {
+										return {
+											a: 1
+										}
+									}
+								})
+
 							</script>
 						</code>
 					</pre>
-				</section>
-				<section>
-
+					<aside class="notes">
+						接下来我们看一下data选项。
+						<br>
+						当一个 Vue 实例被创建时，它会将 data 对象中的所有的 property 加入到 Vue 的响应式系统中。当这些 property 的值发生改变时，视图将会产生“响应”。
+						<br>
+						data选项可以接受一个对象或者一个函数，推荐使用函数的方式返回data对象。
+						<br>
+						直接为data传入一个对象会导致多个Vue实例之间的数据相互影响，可能会产生问题。
+						<br>
+						比如上面的代码，我们定义了一个data对象。
+						<br>
+						并且直接传入Vue的data选项。
+						<br>
+						然后我们会发现Vue实例上的属性a等价于data的属性a。
+						<br>
+						Vue实例上的$data等价于data。
+						<br>
+						如果我们修改Vue实例上的属性a，会影响到data中a的值。
+						<br>
+						同样的如果我们修改data中的a，也会影响到Vue实例上的a的值。
+						<br>
+						在使用Vue时，我们要避免出现此类情况，以免组件中的状态变化变得难以追踪，使问题变得难以排查，使代码变得难以维护。
+						<br>
+						所以我们要使用函数返回data对象的方式来定义data，这样每个Vue实例都会生成新的data，不会相互影响。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">计算属性</h2>
@@ -163,6 +320,17 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							下面我们来讲一下计算属性。
+							<br>
+							计算属性会自动收集依赖，并且在所依赖的属性发生变化时自动重新求值。
+							<br>
+							使用计算属性可以简化我们的一些操作。
+							<br>
+							比如我们看上边的代码，我们的目标是获取FullName的值，而FullName是由firstName和lastName组合得到。
+							<br>
+							一般的方法我们需要在监听firstName和lastName，并且在他们发生变化时重新设置FullName。
+						</aside>
 					</section>
 					<section data-auto-animate>
 						<pre data-id="code-animation">
@@ -183,6 +351,12 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							而如果使用计算属性，我们可以看到代码得到了简化。
+							<br>
+							只需声明一个FullName计算属性，他就会在firstName和lastName变化时自动重新求值。
+							所以计算属性是vue里一个非常强大和实用的特性。
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -213,6 +387,18 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						下一个要介绍的就是侦听器，也就是watch，他可以用来响应数据的变化。
+						<br>
+						watch接收一个对象，key就是要监听的数据，可以是一个data的key也可以是一个计算属性的key，还可以是一个对象的键路径。
+						<br>
+						具体的我们看上面的代码，比如我们想要监听message的变化，那么我们在watch选项中定义一个对象，再添加一个message函数，
+						并且接收newValue和OldValue两个参数，这样我们就能在message变化时添加相应处理。
+						<br>
+						另外除了使用watch选项来做，我们还可以通过Vue实例上的命令式Api $watch来做。并且watch的第一个参数可以接收一个对象的键路径，来监听对象中的深层属性。
+						<br>
+						最后我们可以使用unwatch来取消监听。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">事件处理方法</h2>
@@ -246,6 +432,15 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						接下来介绍的是方法。方法其实就是一段处理逻辑的封装。
+						<br>
+						我们来看一下具体的使用，在模板中我们可以使用v-on绑定事件和处理函数。
+						<br>
+						然后在methods选项中，我们可以定义处理函数进行相应的处理。
+						<br>
+						同时我们定义的方法也能在其他方法中或者Vue实例上直接调用。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">实例生命周期钩子</h2>
@@ -269,13 +464,46 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						接下来介绍一个很重要的选项，就是Vue的生命周期钩子。
+						<br>
+						每个生命周期钩子其实对应的就是Vue实例在执行过程中的不同阶段。
+						<br>
+						包含8个生命周期钩子：有beforeCreate、created、beforeMount、mounted、beforeUpdate、updated、beforeDestroy、destroyed 8个。
+						<br>
+						接下来我们来具体看一下这些生命周期钩子。
+					</aside>
 				</section>
 				<section>
-					<!-- <section data-auto-animate>
-						<image class="stretch" src="assets/lifecycle.png"></image>
-					</section> -->
-					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 0"></section>
-					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 85%"></section>
+					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 0">
+						<aside class="notes">
+							这是Vue官方的一个关于生命周期的图示，可以帮助我们理解。
+							<br>
+							我们一起来看一下，首先是beforeCreate，可以看到这个钩子是在Vue初始化完成之前触发，此时仅完成了时间和生命周期本身的初始化。
+							<br>
+							而Vue的data还没有初始化，dom树也没有生成，所以此时是拿不到data里定义的属性的。
+							<br>
+							然后是created，此时Vue实例的所有的初始化准备工作已经完成，此时可以拿到data里定义的属性并进行修改。
+							<br>
+							这个钩子一般用来提前进行一些数据操作，比如发起一个ajax请求，这样可以尽早发起请求，提升页面的响应速度。
+							<br>
+							接下来就是beforeMount，在图中我们可以看到此时的Vue Dom已经完成初始化，但是还没有真正挂载，
+							并且我们可以看到vue会首先使用template选项作为模板进行编译，如果没有template选项就会寻找element选项指定
+							的元素的outerHTML作为模板。
+						</aside>
+					</section>
+					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 85%">
+						<aside class="notes">
+							紧接着就是mounted，这个是Vue里最常用到的钩子，此时Vue dom已经被真正挂载到了页面的dom tree上。
+							<br>
+							但是 mounted 不会保证所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，还需要在 mounted 内部使用 vm.$nextTick函数。
+							这个函数可以解决一些获取不到dom元素的问题。
+							<br>
+							然后是beforeUpdate和updated，分别在Virtual Dom重新计算并触发页面更新的之前和之后触发。
+							<br>
+							最后是beforeDestroy和destroyed分别在Vue实例被卸载之前和之后触发，一般用于进行一些副作用的清理工作，比如定时器的清理。
+						</aside>
+					</section>
 				</section>
 				<section>
 					<section>
@@ -290,13 +518,33 @@
 								通过 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects#%E5%AE%9A%E4%B9%89_getters_%E4%B8%8E_setters" style="color: #43BA84;">getter/setter</a> 进行依赖收集与触发响应式更新。
 							</li>
 						</ol>
+						<aside class="notes">
+							好，在第一个小节的最后，我们再来了解一下Vue的响应式原理，了解原理有助于我们接下来更好的理解Vue，以及在遇到问题时更好的解决问题。
+							<br>
+							主要原理就是两点，首先Vue会遍历data选项中的所有属性，并使用Object.defineProperty为所有属性都添加getter和setter。
+							<br>
+							然后添加的getter和setter会分别在取值和设置值的时候进行依赖收集和触发响应式更新。
+						</aside>
 					</section>
 					<section>
 						<img style="height: 600px;" src="assets/data.png">
+						<aside class="notes">
+							接下来这张图是官方提供的Vue响应式框架的原理图，对照这张图我们能够直观的了解整个Vue响应式处理的过程。
+							<br>
+							首先我们看这张图的左侧，黄色区域的组件渲染会触发下方紫色区域的data中的getter函数，
+							<br>
+							getter函数会将数据与模板之间的依赖关系进行绑定并告诉蓝色的Watcher模块完成依赖收集。
+							<br>
+							然后在data变化后会触发setter函数，setter函数会将变化的数据通知给Watcher模块，
+							<br>
+							然后Watcher模块会查找数据与模板之间的依赖关系，并触发对应模板的重新渲染。
+							<br>
+							原理还是非常容易理解的。
+						</aside>
 					</section>
 					<section>
 						<pre data-id="code-animation">
-							<code style="max-height: 600px;" class="hljs language-javascript" data-noescape data-trim data-line-numbers="|4|8-27|10|14-26|16-20|17-18|21-25|22-23|28|">
+							<code style="max-height: 580px;" class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-7|4|8-27|9-11|14-26|16-20|17-18|21-25|22-23|28|">
 								<script type="text/template">
 									class Vue{
 										constructor(opt){
@@ -331,6 +579,24 @@
 								</script>
 							</code>
 						</pre>
+						<p style="font-size: 25px;"><a style="color: #3173CA;" href="https://github.com/zhengjiaqi/mvvm/blob/main/mvvm.html">完整代码</a></p>
+						<aside class="notes">
+							接下来我们通过自己实现一个轻量级的Vue，来加深一下对Vue的理解。
+							<br>
+							首先我们来定义一个Vue类，在构造函数中我们主要通过observe方法模拟Vue进行响应式初始化操作。
+							<br>
+							在observe中我们首先遍历data对象并为每一个key绑定一个观察者对象-Observer，这个Observer可以看做是简化版的Watcher模块。
+							<br>
+							然后我们使用Object.defineProperty来为每一个data 属性添加getter/setter。
+							<br>
+							其中getter会在不同的模板首次渲染时将依赖添加至观察者对象。
+							<br>
+							而setter会在数据被修改时通知观察者对象触发模板响应式更新。
+							<br>
+							最后我们也像Vue一样在实例上挂载一个$data属性
+							<br>
+							这些就是Vue响应式处理的基本原理，非常简单，相信大家都能够理解。
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -359,6 +625,26 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							刚刚我们介绍了Vue响应式的原理，看起来非常的强大，但是由于Object.defineProperty的限制，Vue无法检测一些对对象和数组的操作。
+							<br>
+							比如，对于对象: Vue 无法检测 property 的添加或移除。
+							<br>
+							当然这些问题在Vue3.0里已经被解决，主要得益于Proxy比Object.defineProperty更强大的能力。
+							<br>
+							那在Vue2.0中我们就需要Vue.set方法来解决这些问题。
+							<br>
+							<br>
+							接下来我们看一下具体的用例。
+							<br>
+							首先我们创建一个Vue实例并传入一个data, 此时obj 会经过Vue的响应式处理，obj.a 是响应式的。
+							<br>
+							如果我们接下来直接在obj上增加b属性，此时b属性并不会经过Vue的响应式处理，那obj.b 就是非响应式的。
+							<br>
+							那如果我们想要在对象上增加响应式的属性，就需要用到Vue.set方法，也可以用Vue实例上的别名$set方法。
+							<br>
+							这个时候Vue就会为对象添加属性的同时进行响应式处理，这时obj.b 就是响应式的了。
+						</aside>
 					</section>
 					<section data-auto-animate>
 						<h2 style="margin: 0;" class='code-title' data-id="code-title">Vue.set 方法</h2>
@@ -388,18 +674,44 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							那对于数组操作也有两点问题。
+							<br>
+							首先，如果直接通过index修改数组项，或者通过length属性修改数组的长度时，Vue都是无法检测到数组的变动的。
+							<br>
+							这时候也需要Vue.set方法来进行处理。
+							<br>
+							<br>
+							接下来我们也来看一下具体的用例。
+							<br>
+							首先我们创建一个Vue实例并传入一个data其中包含一个数组, 此时items 会经过Vue的响应式处理，对数组整体替换是响应式的。
+							<br>
+							但是直接通过index修改数组项，或者通过length属性修改数组的长度操作都不是响应式的。
+							<br>
+							跟对象处理类似的，我们也要使用Vue.set方法来修改或新增数组的值。
+							<br>
+							对于数组长度的修改，我们可以使用splice这个突变方法来直接修改原数组，触发响应式更新。
+
+						</aside>
 					</section>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">小结</h2>
 					<ul style="margin-top: 50px; width: 80%;">
 						<li>
-							写Vue代码，其实是在写Vue的各个选项
+							写Vue代码，其实是在写Vue的各个选项。
 						</li>
 						<li style="line-height: 1.5;">
-							Vue本身是⼀个类，通过拿到各个选项，然后分别格式化成⾃⼰需要的形式，最后渲染出整个⻚⾯
+							Vue本身是⼀个类，然后通过拿到各个选项，通过模板编译和响应式处理，最后渲染出整个⻚⾯。
 						</li>
 					</ol>
+					<aside class="notes">
+							刚才讲了这么多，我们来进行一下总结吧。
+							<br>
+							首先我们在写Vue代码的时候，其实就是在写Vue的各个选项。
+							<br>
+							然后Vue本身其实就是一个类，然后通过拿到各个选项，再通过模板编译和响应式处理，最后渲染出整个⻚⾯。
+					</aside>
 				</section>
 				<section>
 					<h2>课程大纲</h2>
@@ -412,6 +724,9 @@
 							<li><a href="#/plugin">插件</a></li>
 						</ul>
 					</div>
+					<aside class="notes">
+						好，我们接着来讲一下第二节吧，就是Vue的内置指令。
+					</aside>
 				</section>
 				<section id="directive">
 					<h2 class='code-title' data-id="code-title">使用</h2>
@@ -424,6 +739,13 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							Vue的指令其实就是在模板中以v-开头的一些特殊属性，指令其实是对一段模板处理逻辑的封装。
+							<br>
+							使用也是非常简单，在模板中直接使用就可以了。这里的v-text指令就是文本插值。
+							<br>
+							和下面的双大括号语法的功能是一致的。
+						</aside>
 				</section>
 				<section>
 					<section>
@@ -441,9 +763,23 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							接下来我们看看和v-text类似的一个指令v-html。
+							<br>
+							他们的语法的也是很类似的。
+						</aside>
 					</section>
 					<section>
 						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/v-html-pzx70?file=/index.html" frameborder="0"></iframe>
+						<aside class="notes">
+							然后我们来看一下实际的运行结果。
+							<br>
+							我们可以看到右边v-text会将文本内容原样输出。
+							<br>
+							而v-html则会将文件按HTML的方式输出，类似于我们以前常用的innerHTML与textContent的区别。
+							<br>
+							但是要慎重使用v-html，因为HTML 插值非常危险，很容易导致XSS攻击。
+						</aside>
 					</section>	
 				</section>
 				<section>
@@ -462,6 +798,23 @@
 							<image class="stretch" src="assets/v-show.png"></image>
 							<image class="stretch" src="assets/v-show2.png"></image>
 						</div>
+						<aside class="notes">
+							接下来是v-show和v-if，他们都是用来控制元素的显示和隐藏的。
+							<br>
+							也都是在指令之后设置一个变量。
+							<br>
+							然后下面是他们的输出，左边是ok为true时他们的输出，表现是一样的。
+							<br>
+							右边是当ok为false时他们的输出，可以看到差异就在于：
+							<br>
+							v-show元素在隐藏时元素本身是不会被销毁的，仅仅通过display:none去隐藏他。
+							<br>
+							而v-if的元素是会销毁的，而且会在被销毁的位置以一个comment元素来占位。
+							<br>
+							因此v-if在进行切换时会有更高的开销，而v-show 由于不管初始条件是什么，元素总是会被渲染，所以会有更高的初始渲染开销。
+							<br>
+							所以如果需要非常频繁地进行切换，那么使用 v-show 比较好；而如果在运行时条件很少改变，那么使用 v-if 比较好。
+						</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">v-else and v-else-if</h2>
@@ -477,9 +830,16 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							接下来是v-else和v-else-if，就是类似于if else 的条件控制。
+							<br>
+							唯一的限制就在于，v-else、v-else-if 必须紧跟在 v-if 或者 v-else-if 之后。
+							<br>
+							否则就会产生错误。
+						</aside>
 				</section>
 				<section>
-					<h2 class='code-title' data-id="code-title">v-else and v-else-if</h2>
+					<h2 class='code-title' data-id="code-title">v-for</h2>
 						<pre data-id="code-animation">
 							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|2-4|6-8|10-12|14-16|">
 								<script type="text/template">
@@ -503,12 +863,34 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							接下来是v-for，就是一个对于列表元素的循环渲染。
+							<br>
+							比如上边代码中的第一个，就是对于数组的元素的循环输出，item 就是被迭代的数组元素的别名。
+							<br>
+							然后v-for 还支持一个可选的第二个参数，就是当前项的索引index。
+							<br>
+							然后也可以用 v-for 来遍历一个对象的 property，我们看到可以把对象的value和key都取出来。
+							<br>
+							然后在遍历一个对象时，也可以用第三个参数作为索引。
+							<br>
+							<br>
+							另外我们可以看到每个列表元素上我们都提供了key这个属性，在Vue中它用来跟踪每个节点的身份，作为节点的唯一标识。
+							<br>
+							用于元素在重用和重新排序时，可以被正确的重新复用，从而可以减少重复渲染获得性能提升。
+							<br> 
+							所以我们设置的key必须是一个独特的 key，使用重复的key会造成渲染错误。
+							<br>
+							特别要避免的一个新手容易犯的错误，就是使用index作为key。大家一定要避免出现这种情况，非常容易造成非预期的渲染错误。
+							<br>
+							有兴趣的同学可以深入了解一下Vue虚拟 DOM 算法的原理，对于理解这个问题很有帮助。时间原因就不再详细展开了。
+						</aside>
 				</section>
 				<section>
 					<section>
 						<h2 class='code-title' data-id="code-title">v-on</h2>
 						<pre data-id="code-animation">
-							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-5|7-8|10-11|13-14|16-17|19-20|22-23|25-26|28-29|31-32|34-35|37-38|40-41|43-44|46-47">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-5|7-8|10-11|13-14|16-17|19-20|22-23|25-26|28-29|31-32|34-35|37-38|40-44|46-47">
 								<script type="text/template">
 									<!-- 方法处理器 -->
 									<button v-on:click="doThis"></button>
@@ -524,6 +906,9 @@
 
 									<!-- 动态事件缩写 (2.6.0+) -->
 									<button @[event]="doThis"></button>
+
+									<!-- 对象语法 (2.4.0+) -->
+									<button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
 
 									<!-- 停止冒泡 -->
 									<button @click.stop="doThis"></button>
@@ -546,9 +931,6 @@
 									<!-- 点击回调只会触发一次 -->
 									<button v-on:click.once="doThis"></button>
 
-									<!-- 对象语法 (2.4.0+) -->
-									<button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
-
 									<!--在子组件上监听自定义事件 (当子组件触发“my-event”时将调用事件处理器)：-->
 									<my-component @my-event="handleThis"></my-component>
 
@@ -561,16 +943,73 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							接下来是v-on，是在Vue中非常常用的指令，他是Vue中添加事件监听的方法。
+							<br>
+							<br>
+							● 那最基本的监听某个事件，我们可以用v-on 冒号加事件名的方式，然后再提供一个事件处理函数，比如这里的doThis函数。
+							<br>
+							<br>
+							● 然后Vue在2.6.0版本提供了动态事件绑定的能力，就是在v-on后面可以用方括号指定一个动态的事件名。
+							<br>
+							<br>
+							● 除了直接指定一个事件处理函数，我们还可以使用内联语句向函数传递参数，同时可以使用一个特殊的$event变量传递原始的 DOM 事件。
+							<br>
+							<br>
+							● 另外Vue对v-on提供了一个缩写的语法，就是@符号，这种写法会使Vue的模板更加简洁，也是Vue事件绑定时最常用的语法。
+							<br>
+							<br>
+							● 同样的，动态事件绑定也支持缩写的语法。
+							<br>
+							<br>
+							● Vue在2.4.0版本之后支持了使用对象语法进行事件绑定，可以进行批量的动态的事件绑定，对象的key就是事件名，value就是处理函数，可以使模板更简洁更灵活。
+							<br>
+							<br>
+							● 然后Vue的 v-on 事件绑定还支持添加修饰符，可以用来简化一些常用的事件处理逻辑，使我们可以更加专注于数据处理。
+							<br>
+							比如click.stop可以停止点击事件继续向上冒泡，相当于在事件处理函数中调用event.stopPropagation()。
+							<br>
+							<br>
+							● click.prevent可以阻止点击事件的默认行为，相当于在事件处理函数中调用event.preventDefault()。
+							<br>
+							<br>
+							● 然后我们也可以只阻止一些事件的默认行为，而不提供事件处理函数。
+							<br>
+							<br>
+							● 并且事件修饰符支持串联，可以组合使用修饰符的能力。
+							<br>
+							<br>
+							● 前端中对于键盘事件的处理一般是比较麻烦的一件事，Vue也很贴心的提供了按键修饰符，可以直接监听指定按键的事件。
+							<br>
+							比如.enter就是指定处理回车键的事件。
+							<br>
+							<br>
+							● 也可以直接指定按键的键代码：keyCode，比如.13也是指定处理回车键的事件。
+							<br>
+							<br>
+							● .once修饰符可以时事件只触发一次，简化了我们需要自己处理的事件解绑操作。
+							<br>
+							<br>
+							● v-on也可以直接监听子组件触发的自定义事件。
+							<br>
+							<br>
+							● .native修饰符主要用于自定义组件，用于监听真实的原生事件，因为默认情况下，自定义组件上的事件监听都针对自定义事件，加上.native才能正确监听到自定义组件上的原生事件。
+						</aside>
 					</section>
 					<section>
 						<h2 class='code-title' data-id="code-title">v-on 修饰符</h2>
 						<image style="height: 400px;" src="assets/modifier.png"></image>
+						<aside class="notes">
+							就像之前介绍的，Vue的 v-on 事件可以使用修饰符来简化一些常用的事件处理逻辑，使我们可以更加专注于数据的处理。
+							<br>
+							这里是常用的一些修饰符，大家可以参考。
+						</aside>
 					</section>						
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">v-bind</h2>
 						<pre data-id="code-animation">
-							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-5|7-8|10-11|13-14|16-19|21-23|25-26|28-29|31-32|34-35|">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-5|7-8|10-11|13-14|16-19|21-23|25-26|28-29|">
 								<script type="text/template">
 									<!-- 绑定一个 attribute -->
 									<img v-bind:src="imageSrc">
@@ -602,15 +1041,44 @@
 									<!-- 通过 prop 修饰符绑定 DOM attribute -->
 									<div v-bind:text-content.prop="text"></div>
 
-									<!-- prop 绑定。“prop”必须在 my-component 中声明。-->
-									<my-component :prop="someThing"></my-component>
-
-									<!-- 通过 $props 将父组件的 props 一起传给子组件 -->
-									<child-component v-bind="$props"></child-component>
-
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后是v-bind，这个是在Vue中用的最最频繁的一个指令，就是动态地绑定一个或多个属性到组件。
+							<br>
+							<br>
+							● 比如第一个就是绑定一个属性。
+							<br>
+							<br>
+							● 然后在Vue的2.6.0版本中，v-bind支持了动态的属性名的绑定，就是可以动态的绑定属性的key值。
+							<br>
+							<br>
+							● 与v-on类似的，动态事件绑定也支持缩写的语法，就是：冒号，也是今后大家在Vue中会非常常见的用法。
+							<br>
+							<br>
+							● 动态属性名的绑定也支持缩写语法，就像这样。
+							<br>
+							<br>
+							● v-bind绑定的值也可以是简单的表达式，比如可以进行字符串的拼接。
+							<br>
+							<br>
+							● 下面也是v-on指令的两个典型的使用场景，就是对class和style进行绑定。
+							在class绑定时，我们可以使用对象的方式以及数组的方式，还有数组和对象结合的方式进行。写法很灵活。
+							<br>
+							这个能力就比react的原生能力强很多，在react中做类似的事情可能还需要一些第三方库的帮助，在Vue中就简单方便很多。
+							<br>
+							<br>
+							● 与class类似的style也支持以对象或对象数组的方式进行样式的动态绑定。
+							<br>
+							<br>
+							● 然后v-bind还支持以一整个属性对象的方式进行绑定，就相当于对一个对象进行分解，对象的key作为属性的键对应的值作为属性的值，这个用法比较有意思，一般情况下我们是用不到的，
+							但是如果我们要进行一些组件的封装时就会发现这是一个非常实用的功能。可以方便我们批量的对子组件进行数据绑定。
+							<br>
+							<br>
+							● 最后就是一个.prop修饰符，他可以使数据绑定作为一个 DOM property 绑定而不是作为 attribute 绑定，主要区别是property是Dom js 对象上的属性，
+							有一些涉及表单元素的问题可以使用property绑定来解决。
+						</aside>
 				</section>
 				<section>
 					<section>
@@ -638,9 +1106,43 @@
 									</script>
 								</code>
 							</pre>
+							<aside class="notes">
+								好，我们再来看一下v-model。
+								<br>
+								<br>
+								● 这个指令用于在input、textarea、select等表单控件上进行数据的双向绑定。
+								<br>
+								<br>
+								● 那我们知道其实Vue本身的数据流是与react类似的单向数据流，v-model的双向绑定本质上是一个Vue的语法糖，
+								就是value属性绑定与input事件监听组合的一个语法糖。主要是为了简化对表单数据的处理。
+								<br>
+								<br>
+								● 我们也可以通过$emit触发一个input事件，来创建一个支持 v-model 的自定义输入组件。
+
+							</aside>
 					</section>
 					<section>
 						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/v-model-zplpv" frameborder="0"></iframe>
+						<aside class="notes">
+							然后我们来看一个具体的例子。
+							<br>
+							<br>
+							● 比如这个输入框的下面可以实时显示我输入的内容。
+							<br>
+							而我在代码里只需要简单的使用v-model绑定一个message，是不是非常的简单。
+							<br>
+							<br>
+							● 下边这个呢，是一个支持v-model的自定义组件，点击父组件会把下面的值加10，点击子组件会把值加1。
+							<br>
+							看代码实现也非常简单，只需要在custom-component 上用v-model绑定num的值。
+							<br>
+							然后子组件内部使用$emit input 事件触发value更新。
+							<br>
+							父组件直接修改num的值就可以了。
+							<br>
+							<br>
+
+						</aside>
 					</section>	
 				</section>
 				<section>
@@ -678,6 +1180,11 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							好，然后是v-slot，这个指令用于向组件的插槽中设置内容。
+							后面会在组件中再详细介绍，这里就先略过。
+
+						</aside>
 				</section>
 				<section>
 					<h2>课程大纲</h2>
@@ -690,10 +1197,25 @@
 							<li><a href="#/plugin">插件</a></li>
 						</ul>
 					</div>
+					<aside class="notes">
+						下面我们进入第三节，组件这一节。
+						<br>
+						组件是Vue的核心功能，其实也是所有前端框架的核心功能。
+					</aside>
 				</section>
 				<section id="component">
 					<h2 class='code-title' data-id="code-title">什么是组件</h2>
 					<image style="height: 400px;" src="assets/component.png"></image>
+					<aside class="notes">
+						首先我们来看一下什么是组件。
+						<br>
+						对照这张图，组件其实就是对一段独立逻辑和功能的封装，对于前端页面来说，我们可以将页面的组成部分进行拆分。
+						<br>
+						比如导航、列表、弹窗、菜单都能看做是一个组件，然后也可以将一些组件组合成一个新的组件，最终变成一个完整的页面呈现出来。
+						<br>
+						<br>
+						对一个复杂页面进行合理拆分，也是分治思想的一种实际应用。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">组件的好处</h2>
@@ -702,9 +1224,30 @@
 						<li class="fragment">方便重复使用</li>
 						<li class="fragment">简化调试步骤</li>
 						<li class="fragment">提升项目的可维护性</li>
-						<li class="fragment">便于协同开发</li>
+						<li class="fragment">便于自动化测试</li>
 						<li class="fragment">...</li>
 					</ul>
+					<aside class="notes">
+						接下来我们来看一下组件到底有什么好处。
+						<br>
+						<br>
+						首先是可以提高开发效率，以前可能我们一个页面只能一个人做，现在我们可以多人并行开发。
+						<br>
+						<br>
+						然后方便重复使用，就是说我们很多时候需要重复使用一些基础功能，就可以统一抽象成一个独立的组件，然后让不同的页面同时去使用。
+						<br>
+						<br>
+						然后简化调试步骤就是说，组件的问题可以专注于组件内部的逻辑，而不需要关注组件外部的东西。只要保证组件本身没有问题，那么在任意的地方使用都不会有问题。
+						<br>
+						<br>
+						另外就是可以提升整个项目的可维护性。也就是系统各个部分有明确的职责划分，功能迭代与问题修改都可以在明确的范围内进行，减少对系统其他部分的影响。
+						<br>
+						<br>
+						还有就是可以便于进行自动化测试，针对小组件的测试比直接对整个系统进行测试要容易的多，并且组件级别充分的测试，也能在绝大多数情况下保证系统整体的质量。
+						<br>
+						<br>
+						当然还有很多其他的好处，其实目前前端整体的发展过程就是对前端组件化、模块化演进的过程，比如最新的ES modules的发展，未来的前端开发模式可能又会发生新的变化。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">组件的核心选项</h2>
@@ -715,16 +1258,42 @@
 						<li class="fragment">方法 (methods)</li>
 						<li class="fragment">生命周期钩子函数 (lifecycle)</li>
 					</ul>
+					<aside class="notes">
+						然后我们再来看看组件的一些核心选项。
+						<br>
+						<br>
+						首先就是模板，Vue使用了基于 HTML 的模板语法，允许开发者声明式地将 DOM 绑定至底层 Vue 实例的数据。
+						所有 Vue.js 的模板都是合法的 HTML，所以能被遵循规范的浏览器和 HTML 解析器解析。
+						<br>
+						<br>
+						然后就是组件的一个初始数据：data，提供一些组件内部使用的数据。
+						<br>
+						Vue要求一个组件的 data 选项必须是一个函数，这个函数返回一个data对象，这样来保证每个实例，可以单独维护一份被返回对象的独立的拷贝。
+						<br>
+						否则如果直接在 data 选项中设置一个对象的话，会导致一个组件的多个实例之间的状态会相互影响。根本原因就是多个实例之间使用了同一个对象的引用。
+						<br>
+						为了避免这种情况，需要data 选项必须是一个函数。
+						<br>
+						<br>
+						还有可接受的外部参数props，用于向子组件传递数据。
+						<br>
+						<br>
+						还有方法
+						<br>
+						<br>
+						还有组件本身的生命周期钩子，跟一个Vue的实例本质上没有太大的差异。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">使用组件</h2>
 						<pre data-id="code-animation">
-							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-4|5-10|12-19|16-18|">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-4|6-10|13-20|17-19|">
 								<script type="text/template">
 									// 全局注册组件
 									Vue.component('my-component', {
 										template: `<div>A custom component!</div>`
 									})
+
 									// 创建根实例
 									new Vue({
 										template: `<div>
@@ -743,6 +1312,26 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后组件的使用也是比较简单的，使用之前需要先注册组件。
+							<br>
+							<br>
+							● 注册组件有两种方式，一种是全局注册，一种是局部注册，首先我们来看一下全局注册。
+							<br>
+							全局注册使用一个Vue的全局静态方法：Vue.component，第一个参数就是组件的名字，第二个参数接受一个对象来设置组件的选项，
+							这里我们简单提供了一个template选项。
+							<br>
+							<br>
+							● 然后我们就可以在所有创建Vue 根实例的模板中或者组件中使用我们注册的全局组件。
+							<br>
+							<br>
+							● 同时Vue也提供了局部注册组件的方式，主要是为了优化打包结果，避免组件在未被使用时包含在构建结果中。
+							<br>
+							<br>
+							● 就是组件中一个components的选项，接收一个对象，key就是组件的名字，值就是被注册组件的配置。
+							<br>
+							我们也可以看到组件本质上在Vue中就是一个有各种选项的对象。
+						</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">props</h2>
@@ -758,6 +1347,16 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后 props 就是一些组件可接受的外部参数，用于外部向子组件传递数据。
+							<br>
+							<br>
+							● 在组件中可以声明一个props选项，是一个数组，可以设置多个值，比如这里我们接受一个叫title的props。
+							然后我们在模板中我们也可以直接使用这个props。
+							<br>
+							<br>
+							● 在外部我们可以直接在组件上设置title属性和他的值，在组件内部就可以拿到并渲染title。
+						</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">自定义事件</h2>
@@ -774,24 +1373,30 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后是自定义事件，自定义事件也是Vue里非常实用的一个特性，是一种很方便的子组件向父组件通信的方式。
+							<br>
+							<br>
+							● 在子组件内部有一个emit方法，可以触发自定义事件并传递参数。在组件外部只要使用v-on来绑定对应的事件处理函数就可以了。
+						</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">插槽</h2>
 						<pre data-id="code-animation">
-							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-4|6-10|12-15|">
+							<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-4|6-10|12-15|">
 								<script type="text/template">
-									// <navigation-link>组件
+									<!--  <navigation-link>组件  -->
 									<a v-bind:href="url" class="nav-link">
 										<slot></slot>
 									</a>
 
-									// 使用
+									<!--  使用 -->
 									<navigation-link url="/profile">
 										<!--  任意html -->
 										Your Profile
 									</navigation-link>
 
-									// 输出
+									<!--  输出 -->
 									<a href="/profile" class="nav-link">
 										Your Profile
 									</a>
@@ -799,6 +1404,24 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后我们再来介绍一下组件中最核心也最强大的一个能力，就是插槽。
+							<br>
+							我们在封装一个组件时不可能做到面面俱到，需要对外为使用者预留一些可以自定义的空间，这样才能在易用性和可扩展性之间达到一种平衡，
+							才能封装出一个好用而强大的组件。
+							<br>
+							插槽就是Vue为了解决这种问题而提供的一种能力，这套机制的设计灵感源自 Web Components 规范草案，将 slot 元素作为承载分发内容的出口。
+							<br>
+							<br>
+							● 来看这个具体的例子，在组件内部我们使用了一个 slot 元素
+							<br>
+							<br>
+							● 接下来在使用的时候，这个组件标签里面可以包裹任意的 HTML 片段。
+							<br>
+							<br>
+							● 最后输出时就会把内容输出到 slot 元素定义的位置。
+
+						</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">插槽后备内容</h2>
@@ -823,6 +1446,15 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							● 然后插槽还支持设置一个后备内容，就是一个默认值，它只会在没有提供内容的时候被渲染。
+							<br>
+							<br>
+							● 比如这里不传任何内容的情况下。
+							<br>
+							<br>
+							● 渲染结果中仍然是有内容的。
+						</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">具名插槽</h2>
@@ -848,6 +1480,20 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							有时我们需要多个插槽，比如这里的组件，我们希望在组件不同的位置放置不同的内容。
+							<br>
+							对于这种情况，slot 元素有一个特殊的属性：name，这个属于可以用来定义额外的插槽。
+							<br>
+							<br>
+							● 页头的插槽我们命名为header。
+							<br>
+							<br>
+							● 没有命名的插槽会作为默认插槽，我们把主要的内容放在这里。
+							<br>
+							<br>
+							● 页脚的插槽我们命名为footer
+						</aside>
 					</section>
 					<section data-auto-animate>
 						<pre data-id="code-animation">
@@ -869,6 +1515,18 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							那在使用时，我们可以在一个 template 元素上使用 v-slot 指令，并以 v-slot 的参数的形式提供名称。
+							<br>
+							<br>
+							● 为 header 插槽提供内容我们可以使用这个加上 v-slot:header 指令的template包裹内容，template里的内容就会在 header 插槽的位置被渲染。
+							<br>
+							<br>
+							● 没有指定插槽名称的内容会在默认插槽中进行渲染。
+							<br>
+							<br>
+							● footer 的使用跟之前也是类似的。
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -881,18 +1539,27 @@
 									Clicking here will send you to: {{ url }}
 									<!--
 									这里的 `url` 会是 undefined，因为其 (指该插槽的) 内容是
-									传递给 <navigation-link> 的而不是
-									在 <navigation-link> 组件*内部*定义的。
+									传递给 <navigation-link> 的
+									而不是在 <navigation-link> 组件*内部*定义的。
 									-->
 								</navigation-link>
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						另外一个我们需要了解的概念就是插槽的编译作用域。
+						<br>
+						<br>
+						Vue 模板的编译都是在各自的作用域中进行的，父级模板的内容都在父级作用域中编译，子模板中的内容都在子作用域中编译。
+						<br>
+						<br>
+						● 意思其实就像这个代码示例展示的一样，父级模板中无法直接使用子组件中定义的数据，这个 url 的取值会是undefined。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">作用域插槽</h2>
 					<pre data-id="code-animation">
-						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-6|3-5|8-17|10-12|14-16|">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-6|8-17|10-12|14-16|">
 							<script type="text/template">
 								<!-- 将 user 作为 <slot> 元素的一个 attribute 绑定 -->
 								<span>
@@ -915,6 +1582,20 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						其实在绝大多数的情况下，刚才介绍的插槽最基本的使用方式已经可以满足我们的需求，但是在一些比较复杂的组件封装和应用场景。
+						<br>
+						插槽中的内容需要能够直接访问子组件中的数据，作用域插槽就是Vue为了解决这个问题在2.6.0 版本中新增加的能力。
+						<br>
+						<br>
+						● 首先在定义插槽时我们使用v-bind将user数据作为 slot 元素的一个属性绑定上去。
+						<br>
+						<br>
+						● 在使用时我们使用一个带值的 v-solt指令来定义插槽prop的名字，之后我们就可以通过这个prop，这里我们叫做slotProps 来我们之前绑定的子组件中的user 的值。
+						<br>
+						<br>
+						● 对于具名插槽的使用也是类似的，之前的default就是默认插槽，这里也可以指定具体的插槽名称。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">一个具体的例子</h2>
@@ -949,12 +1630,28 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						然后我们来一个具体的例子吧。
+						<br>
+						<br>
+						● 首先我们要实现一个 todo-list 组件，用来渲染todo列表。
+						<br>
+						<br>
+						● 然后我们为每一个todo元素准备了一个插槽，并且将todo的数据绑定上去。
+						<br>
+						<br>
+						● 接下来我们在使用时。
+						<br>
+						<br>
+						● 就可以拿到组件内部todo元素的数据，这里我们扩展了组件的能力，通过判断todo.isComplete 为 true 时，在todo的内容前加上了一个对勾。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">动态组件</h2>
 					<pre data-id="code-animation">
-						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1|3-6|">
+						<code class="hljs language-html" data-noescape data-trim data-line-numbers="|1-2|4-7|">
 							<script type="text/template">
+								<!-- 组件会在 `currentTabComponent` 改变时改变 -->
 								<component v-bind:is="currentTabComponent"></component>
 
 								<!-- 失活的组件将会被缓存！-->
@@ -965,6 +1662,14 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						然后我们来讲一下动态组件。
+						<br>
+						● 动态组件其实很简单，用来在不同组件之间进行切换，比如在多标签切换的场景，我们就可以用 component 元素加一个is 属性，值是组件的名字来实现。
+						<br>
+						<br>
+						● 与直接使用v-if 进行组件切换不同的就是，动态组件外可以添加一个 keep-alive 元素包裹，这样可以保持切换前的组件状态不丢失，这个功能在页面级组件的切换时非常有用。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">异步组件</h2>
@@ -998,6 +1703,18 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						最后我们来讲一下异步组件。这个功能是对于线上页面性能优化时非常重要的一个手段，他可以让一个组件只有在需要的时候才从服务器加载，一般我们把我们页面级的组件都定义为异步组件，
+						这样在首屏加载时就只会加载首屏的资源，其他页面的资源在需要时在加载，这样可以提高首屏的加载速度。
+						<br>
+						● 异步组件最基础的原理就是Vue注册的组件支持异步注册，接收一个工厂函数，这个工厂函数只有在组件需要被渲染的时候才会触发，大家可以控制resolve的时机。
+						<br>
+						<br>
+						● 当然更简单的方法就是配合webpck的代码拆分能力和es6语法来使用。
+						<br>
+						<br>
+						● 最后对于局部注册的组件，也支持类似的用法。
+					</aside>
 				</section>
 				<section id="mixin">
 					<h2>课程大纲</h2>
@@ -1010,6 +1727,13 @@
 							<li><a href="#/plugin">插件</a></li>
 						</ul>
 					</div>
+					<aside class="notes">
+						然后组件部分我们讲完了，到目前我们已经将Vue最基础最常用的部分介绍完了，现在大家其实已经具备了使用vue 进行常规开发的能力了，
+						可以看到Vue的学习成本其实是非常低的，这也是Vue一个非常大的优势。
+						<br>
+						<br>
+						接下来我们继续学习一些Vue中的高级知识。
+					</aside>
 				</section>
 				<section>
 					<section>
@@ -1039,6 +1763,21 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							首先是混入，混入与js中的 Object.assign 对象合并很类似，但是混入还有一些不同点，Object.assign 的合并只是一种浅合并，只合并对象的第一层，
+							但是混入会针对不同的选项会有不同的专门的策略。
+							<br>
+							混入是Vue中对可复用功能的一种封装。
+							<br>
+							<br>
+							● 接下来我们看一下具体的使用方式，这里我们定义了一个混入对象，可以看到和组件很类似，这里我们定义了一个 created 生命周期钩子，再调用了一个hello函数。
+							<br>
+							<br>
+							● 使用时我们将混入对象传入组件的mixins选项中，是一个数组，可以使用多个mixin。
+							<br>
+							<br>
+							● 最后我们使用这个组件会发现mixin中的逻辑也被执行了。
+						</aside>
 					</section>
 					<section>
 						<h2 class='code-title' data-id="code-title">全局混入</h2>
@@ -1062,6 +1801,17 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后混入也支持进行全局混入，但是在使用时要非常谨慎，因为一旦使用全局混入，它将影响每一个之后创建的 Vue 实例。
+							<br>
+							全局混入主要在一些Vue 的插件中使用，比如vue-router 和 vuex 中都有使用。
+							<br>
+							<br>
+							● 那使用时主要就是Vue提供了一个mixin静态全局方法，进行全局混入。
+							<br>
+							<br>
+							● 之后所有的vue实例都带了默认行为。
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -1071,7 +1821,7 @@
 							<li style="margin: 0; padding-top: 70px; font-size: 30px;">data对象，递归合并，当前组件的数据优先</li>
 						</ul>
 						<pre data-id="code-animation">
-							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-8|10-22|12-16|18-21|">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-8|10-22|18-21|">
 								<script type="text/template">
 									var mixin = {
 										data: function () {
@@ -1098,6 +1848,18 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							然后混入和组件本身的选项合并时有一套默认的规则。
+							<br>
+							首先就是对于data对象和合并，会同时递归的对对象的深层属性进行合并，并且在遇到相同属性时，以当前组件的数据为优先。
+							<br>
+							<br>
+							● 比如这里的代码我们定义了一个mixin，同时定义了 message 和 foo 两个 data。
+							<br>
+							<br>
+							● 然后在下面我们使用这个mixin，同时在组件内部定义 message 和 bar 两个 data,
+							最后输出的结果我们可以看到message的值是组件内部的值，foo、bar 两个属性都得到了保留。
+						</aside>
 					</section>
 					<section data-auto-animate>
 						<ul>
@@ -1125,6 +1887,18 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							那对于生命周期钩子，会被合并成一个数组，并且混入的钩子会被优先调用。
+							<br>
+							<br>
+							● 比如这里的代码我们定义了一个mixin，同时定义了 created 生命周期钩子。
+							<br>
+							<br>
+							● 然后在下面我们使用这个mixin，同时在组件内部也定义了一个 created 生命周期钩子。
+							<br>
+							<br>
+							● 最后执行的结果就是混入的钩子先于组件的钩子被执行。
+						</aside>
 					</section>
 					<section data-auto-animate>
 						<ul>
@@ -1162,6 +1936,18 @@
 								</script>
 							</code>
 						</pre>
+						<aside class="notes">
+							对于对象的选项，比如 methods、components 和 directives，将被合并为同一个对象。如果发送冲突时，会以当前组件优先。
+							<br>
+							<br>
+							● 比如这里我们在mixin 中定义了两个函数foo 和 conflicting。
+							<br>
+							<br>
+							● 然后在下面我们使用这个mixin，同时在组件内部也定义了两个函数 bar 和 conflicting。
+							<br>
+							<br>
+							● 最后执行的结果就是foo 和 bar 都可以调用，而conflicting函数的执行结果与组件内定义的一致。
+						</aside>
 					</section>
 				</section>
 				<section>
@@ -1175,6 +1961,9 @@
 							<li><a href="#/plugin" class="active">插件</a></li>
 						</ul>
 					</div>
+					<aside class="notes">
+						然后我这节课最后要讲的一个知识点，就是插件。
+					</aside>
 				</section>
 				<section id="plugin">
 					<h2 class='code-title' data-id="code-title">插件功能</h2>
@@ -1185,6 +1974,23 @@
 						<li style="font-size: 35px;" class="fragment">通过全局混⼊来添加⼀些组件选项（Vue.mixin）</li>
 						<li style="font-size: 35px;" class="fragment">添加Vue实例⽅法（Vue.prototype）</li>
 					</ol>
+					<aside class="notes">
+						插件就是Vue中用来增强现有功能的机制，主要是在Vue中添加一些全局功能。
+						<br>
+						<br>
+						● 插件主要提供了4点扩展能力，第一个就是可以添加Vue的全局方法或者属性。
+						<br>
+						<br>
+						● 第二个就是你可以添加全局资源：指令/过滤器/过渡等，一般用的比较多的就是添加一个自定义指令。
+						<br>
+						<br>
+						● 然后还可以使用全局混入，就像我们之前介绍的，来添加一些组件的选项，提供一些默认行为。
+						<br>
+						<br>
+						● 最后就是可以添加一些实例方法，就像之前介绍过的 $emit 方法，就是通过Vue.prototype 原型链来进行扩展，
+						<br>
+						主要针对于与实例绑定的一些操作的扩展。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">使用插件</h2>
@@ -1196,6 +2002,11 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						插件的使用就非常的简单，只需要使用Vue.use方法传入插件实例就可以了，当然也可以提供一个可选的选项对象。
+						<br>
+						Vue.use方法本质上会调用插件暴露的一个install 方法，来进行插件功能的挂载。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">开发插件</h2>
@@ -1232,6 +2043,28 @@
 							</script>
 						</code>
 					</pre>
+					<aside class="notes">
+						接下来我们来看一下插件的开发
+						<br>
+						<br>
+						● Vue的插件要求暴露一个install方法，这个方法就是通过Vue.use挂载插件的方法。
+						<br>
+						这个方法接收两个参数，第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象。
+						<br>
+						使用参数传递Vue 构造器的主要目的，就是保证插件使用的Vue和用户使用的Vue，是同一个Vue，这样才能正确的扩展功能。
+						<br>
+						<br>
+						● 然后我们可以这样扩展一个全局方法或者属性。
+						<br>
+						<br>
+						● 或者添加一个自定义指令。
+						<br>
+						<br>
+						● 还有就是全局的混入。
+						<br>
+						<br>
+						● 以及添加一个实例的方法。
+					</aside>
 				</section>
 				<section>
 					<h2 class='code-title' data-id="code-title">单文件组件</h2>
@@ -1268,18 +2101,96 @@
 								&lt;/style&gt;
 						</code>
 					</pre>
+					<aside class="notes">
+						好，然后现在到了我们本节课的最后一部分了，也是Vue中最具特色的一个特性，就是单文件组件，这个方式也是使用Vue的最常见的方式，主要是整体提升了Vue的工程化能力。
+						<br>
+						在之前的很多示例中，我们使用 Vue.component 来定义全局组件，紧接着用 new Vue({ el: '#container '}) 在每个页面内指定一个容器元素。
+
+						这种方式在很多中小规模的项目中运作的很好，在这些项目里 JavaScript 只被用来加强特定的视图。但当在更复杂的项目中，或者你的前端完全由 JavaScript 驱动的时候，有一些缺点就会变得非常明显：
+						<br>
+						● 全局定义 (Global definitions) 强制要求每个 component 中的命名不得重复。
+						<br>
+						● 字符串模板 (String templates) 缺乏语法高亮，在 HTML 有多行的时候，需要手动处理换行。
+						<br>
+						● 没有CSS的组件化 (No CSS support) 就是js 已经可以组件化时，CSS 的组件化处理被漏掉了。
+						<br>
+						● 没有构建步骤 (No build step) 限制只能使用 HTML 和 ES5 JavaScript，而不能使用预处理器，如 Babel。
+						<br>
+						文件扩展名为 .vue 的 single-file components (单文件组件) 为以上所有问题提供了解决方法，并且还可以使用 webpack 等构建工具。
+						<br>
+						<br>
+						● 我们可以来看一下这个文件名叫做 Hello.vue 的简单示例。
+						<br>
+						首先我们可以直接在 template 标签中来定义模板，这种类似于HTML标准的写法，可以使我们在编辑器中获得完整的语法高亮。
+						<br>
+						并且我们也可以添加模板的预处理器，来提供类似jade语法的支持，来简化模板书写。
+						<br>
+						<br>
+						● 然后我们的逻辑可以直接写在类似HTML的script 标签中，同样可以添加类似Babel 的预处理，来支持es6的语法。
+						<br>
+						<br>
+						● 最后最实用的就是将可以css直接放在style标签中，并且通过预处理可以支持less、sass之类的语法，
+						<br>
+						而且通过设置 scoped 属性可以直接获得组件作用域的 CSS 能力，就是css样式只在当前组件内生效，而不会污染全局的css 影响其他组件的样式。
+						<br>
+						这也是Vue中一个非常实用的功能。
+					</aside>
 				</section>
 				<section>
 					<h2 style="font-size: 100px;" class='code-title' data-id="code-title">Q&A</h2>
+					<aside class="notes">
+						好了，Vue相关的基本内容到这里就结束了，内容本身也进行了一些删减，挑出了最基础和最重要的部分，更多更详细的内容大家可以参考Vue的官方文档，
+						<br>
+						Vue的文档也是很清楚、很详细、很高质量的文档，对于大家今后也写出高质量的文档也是一个很好的参考。
+						<br>
+						<br>
+						这就是今天的全部内容，相信大家已经对Vue有所了解，可以看到Vue其实是一个很简单、很清晰、但是功能又非常强大的渐进式框架。
+						<br>
+						当然大家可能也知道Vue最新的3.0正式版也已经发布了，主要是进一步优化了虚拟dom的性能、缩减了Vue本身代码的体积、增强了对ts的支持，基本功能和基本概念和Vue2 基本一致。
+						<br>
+						从Vue2到Vue3的迁移成本也是比较低的，基本业务代码都能无缝迁移，并且近期Vue的默认版本也将切换到3.0，而且后续的3.2版本会增加setup script 的一个新特性，会大幅简化3.0中组合式Api 的使用，
+						是一个真香功能。
+						<br>
+						Vue 还是在继续的快速发展中，大家可以持续关注。
+						<br>
+						<br>
+						好，我讲完这些不知道大家有什么疑问吗，我可以帮大家解答一下，任意的问题都可以问。
+						<br>
+						<br>
+						好，可以是我讲的这些内容太简单了，大家都已经学会的了，那我们就来看一下最后要做的一件事情。
+					</aside>
 				</section>
 				<section>
 					<h2 data-id="code-title">课后作业</h2>
 					<ul>
 						<li>在项目中使用vue-router</li>
 						<li>封装一个Modal框，参考<a style="color: #3173CA;" href="https://antdv.com/components/modal-cn/#components-modal-demo-information-modal-dialog">Ant Design Vue</a></li>
-						<li>封装一个轮播图组件（选做），参考<a style="color: #3173CA;" href="https://github.com/zhengjiaqi/vue-light-swiper">vue-light-swiper</a></li>
+						<li>封装一个移动端轮播图组件（选做），参考<a style="color: #3173CA;" href="https://github.com/zhengjiaqi/vue-light-swiper">vue-light-swiper</a></li>
 						<li>作业项目：<a style="color: #3173CA;" href="https://gerrit.zhenguanyu.com/admin/repos/nb-vue-2021">https://gerrit.zhenguanyu.com/admin/repos/nb-vue-2021</a></li>
 					</ul>
+					<aside class="notes">
+						课后作业，就是一个简单的小作业。
+						<br>
+						首先是希望大家使用一下vue-router插件，这个就是一个控制页面路由切换的插件，也是实际工作中的常用插件。
+						<br>
+						<br>
+						然后就是需要大家封装一个模态框组件，这个也是一个非常常见的组件，大家可以参考Ant Design 的样子去实现。
+						<br>
+						<br>
+						然后是一个选做题，就是封装一个移动端的轮播图组件，就是可以在手机浏览器中运行的轮播图，轮播图大家都很常见，但是想做得好还是很有挑战性的，大家有时间的话可以尝试一下。
+						<br>
+						效果可以参考我之前写的一个组件。
+						<br>
+						<br>
+						最后就是，作业项目的gerrit地址在这里，大家可以用自己的名字就是idap的名字，从master拉一个新的分支做作业，大家都往自己的分支提交代码，
+						另外本地的开发环境已经帮大家配置好了，大家可以直接开始功能的开发。
+						<br>
+						<br>
+						不知道关于作业大家还有什么问题吗。
+						<br>
+						<br>
+						好，今天的课程到这里就全部结束了，感谢大家的积极参与。
+					</aside>
 				</section>
 			</div>
 		</div>
