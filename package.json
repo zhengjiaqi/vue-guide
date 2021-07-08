@@ -10,16 +10,16 @@
   "scripts": {
     "test": "gulp test",
     "start": "gulp serve",
-    "build": "gulp build"
+    "build": "gulp build",
+    "predeploy": "npm run build && npm run copy",
+    "copy": "cpy ./index.html ./dist ./plugin ./assets ./output --parents",
+    "deploy": "gh-pages -d output"
   },
   "author": {
     "name": "zhengjiaqi",
     "email": "971682460@qq.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:zhengjiaqi/vue-guide.git"
-  },
+  "repository": "zhengjiaqi/vue-guide",
   "engines": {
     "node": ">=10.0.0"
   },
@@ -38,7 +38,9 @@
     "babel-plugin-transform-html-import-to-string": "0.0.1",
     "colors": "^1.4.0",
     "core-js": "^3.12.1",
+    "cpy-cli": "^3.1.1",
     "fitty": "^2.3.0",
+    "gh-pages": "^3.2.3",
     "glob": "^7.1.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^5.0.0",
