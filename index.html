@@ -205,7 +205,7 @@
 						</aside>
 					</section>
 					<section>
-						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/hello-vue-cbeqi?file=/index.html" frameborder="0"></iframe>
+						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/hello-vue-44k09?file=/index.html" frameborder="0"></iframe>
 						<aside class="notes">
 							这个就是实际渲染结果的一个展示，可以看到Hello Vue已经被渲染出来了。
 							<br>
@@ -1623,7 +1623,35 @@
 						</aside>
 					</section>
 				</section>
-				<section>
+				<section data-auto-animate>
+					<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/silly-swanson-rd4vb?file=/src/components/HelloWorld.vue" frameborder="0"></iframe>
+					<aside class="notes">
+						下面我们再来看一个插槽使用的具体示例。
+						<br>
+						<br>
+						在这个示例中我们开发了一个面板组件，这个组件主要包含了两个部分：标题和内容。
+						<br>
+						<br>
+						● 那基础的使用呢也很简单，只需我们给组件传一个 title 的 props 和面板的内容就可以了。
+						<br>
+						<br>
+						● 但是在实际使用这个组件的过程中，我们可能会希望可以自定义title 和 content 的样式和内容。
+						<br>
+						比如这里我们需要把title 设置为一个带链接的a标签，内容我们可能希望是一个列表，并且颜色我们可能希望设置成绿色。
+						<br>
+						<br>
+						● 那这个时候就需要使用到Vue 插槽的能力了。我们来看一下Panel这个组件的实现，
+						<br>
+						在title的位置我们设置了一个name为title的具名插槽，并且我们设置了后备内容可以接收title 的 prorps 并用h1标签渲染。
+						<br>
+						然后在content中我们设置了默认插槽，看起来也很简单。
+						<br>
+						<br>
+						● 这样简单的封装之后，我们就可以既复用 Panel 面板组件的整体样式和结构，比如面板外面的边框和标题的背景颜色，又可以自定义title 和 content 的内容，来达到效率和灵活性的最佳平衡。
+						这也是一个好的组件封装的设计原则。
+					</aside>
+				</section>
+				<!-- <section>
 					<h2 class='code-title' data-id="code-title">编译作用域</h2>
 					<image src="assets/slot.png"></image>
 					<pre data-id="code-animation">
@@ -1739,7 +1767,7 @@
 						<br>
 						● 就可以拿到组件内部todo元素的数据，这里我们扩展了组件的能力，通过判断todo.isComplete 为 true 时，在todo的内容前加上了一个对勾。
 					</aside>
-				</section>
+				</section> -->
 				<section>
 					<h2 class='code-title' data-id="code-title">动态组件</h2>
 					<pre data-id="code-animation">
