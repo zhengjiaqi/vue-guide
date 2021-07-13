@@ -14,6 +14,11 @@
 		<!-- Theme used for syntax highlighted code -->
 		<!-- <link rel="stylesheet" href="plugin/highlight/monokai.css"> -->
 		<link rel="stylesheet" href="plugin/highlight/atom-one-dark.css">
+		<style>
+			.controls{
+				transform: scale(0.3);
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -67,7 +72,7 @@
 					</div>
 					<aside class="notes">
 						Vue的官方对于Vue的一个最重要的定位就是，渐进式框架。
-						<br>
+						<!-- <br>
 						然后说到渐进式框架的话，就会想到web里面的两个设计原则：
 						<br>
 						一个叫优雅降级，一个叫渐进增强。
@@ -75,8 +80,9 @@
 						优雅降级就是说，在开发的过程中先构建一个完整的功能，然后再针对低版本浏览器进行兼容。
 						<br>
 						比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。
+						<br> -->
 						<br>
-						然后渐进增强，就是说一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器优化效果、交互、追加功能达到更好的体验。
+						是Web中常见的渐进增强思想的一种体现，就是说一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器优化效果、交互、追加功能达到更好的体验。
 					</aside>					
 				</section>
 				<section data-background="assets/process.png">
@@ -85,21 +91,25 @@
 						<br>
 						可以看这张图，Vue最核心的功能在最左边，就是两点。
 						<br>
+						<br>
 						一点是声明式渲染，一点是组件系统。就是标红的地方。
 						<br>
-						第三层呢，就是客户端路由，在Vue中由vue-router这个扩展插件来实现。
+						<br>
+						由里向外第三层呢，就是客户端路由，在Vue中由vue-router这个扩展插件来实现。
+						<br>
 						<br>
 						第四层是大型状态管理，在Vue中由Vuex实现，就是对应react中的redux。
+						<br>
 						<br>
 						接下来是构建系统，由一系列cli工具以及Webpack插件组成，提供开发Vue所需的工程能力，比如对Vue单文件组件的支持。
 						<br>
 						最近Vue官方，配合Vue3提供了下一代前端开发与构建工具Vite，基于原生ES模块，可以极大提升开发构建速度，大家可以线下尝试一下，构建速度提升非常明显。
 						<br>
-						最后就是客户端存储，客户端可以通过将服务端数据存储在本地的，比如Local Storage或IndexedDB中，来使网站可以离线访问以及提升性能。
 						<br>
-						然后Vue就是一种分层设计，他最关心自己的最核心的两个点，就是声明式渲染和组件系统。
+						这就是Vue的分层设计，他最关心自己的最核心的两个点，就是声明式渲染和组件系统。
 						<br>
 						然后外层的功能，每层都是可选的，你可以根据自己的需要灵活选择不同的实现来完成相似的功能。
+						<br>
 						<br>
 						这就是Vue的渐进增强，一开始只关心最核心的两个点，上层的功能通过扩展和插件来提供。
 					</aside>
@@ -675,12 +685,14 @@
 						<h2 class='code-title' data-id="code-title">Vue.set 方法</h2>
 						<p style="font-size: 30px;">对于对象: Vue 无法检测 property 的添加或移除</p>
 						<pre data-id="code-animation">
-							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-7|9|11-13|15|">
+							<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1-9|11|13-15|17|">
 								<script type="text/template">
 									var vm = new Vue({
-										data:{
-											obj: {
-												a: 1
+										data() {
+											return {
+												obj: {
+													a: 1
+												}
 											}
 										}
 									}) // 'vm.obj.a' 是响应式的
@@ -851,12 +863,15 @@
 							接下来我们看看和v-text类似的一个指令v-html。
 							<br>
 							他们的语法的也是很类似的。
+							<br>
+							<br>
+							然后我们来看一下实际的运行结果。
 						</aside>
 					</section>
 					<section>
 						<iframe data-autoplay width=100%" height="650" data-preload src="https://codesandbox.io/s/v-html-pzx70?file=/index.html" frameborder="0"></iframe>
 						<aside class="notes">
-							然后我们来看一下实际的运行结果。
+							<!-- 然后我们来看一下实际的运行结果。 -->
 							<br>
 							我们可以看到右边v-text会将文本内容原样输出。
 							<br>
@@ -1837,7 +1852,8 @@
 						<br>
 						● 具体的我们使用axios库的拦截器功能，来处理网络请求，我们处理了请求超时的情况、数据状态错误的情况、以及服务端错误的情况。
 						<br>
-						● 比如，服务端返回的状态是200，但是dada.status 为0的话可能我们认这个数据也是有问题的，要显示服务端的返回的错误消息。
+						<br>
+						● 比如，服务端返回的状态是200，但是data.status 为0的话可能我们认这个数据也是有问题的，也要显示服务端的返回的错误消息。
 						<br>
 						<br>
 						● 然后，如果服务端返回5开头的状态码比如500，或者404，我们认为可能是服务器的问题。
