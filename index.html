@@ -33,7 +33,7 @@
 				</section>
 				<section>
 					<h2>个人简介</h2>
-					<div style="font-size: 20px; margin: 60px 0 0 300px; text-align: left;">
+					<div style="font-size: 30px; margin: 60px 0 0 300px; text-align: left;">
 						<p>姓名：郑家骐</p>
 						<p>来自：辅导研发部 课程体验团队</p>
 						<p>做的事情：直播桌面端</p>
@@ -205,7 +205,7 @@
 						</aside>
 					</section>
 					<section>
-						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/hello-vue-44k09?file=/index.html" frameborder="0"></iframe>
+						<iframe data-autoplay width="100%" height="650" data-preload src="https://codesandbox.io/s/hello-vue-44k09?file=/index.html" frameborder="0"></iframe>
 						<aside class="notes">
 							这个就是实际渲染结果的一个展示，可以看到Hello Vue已经被渲染出来了。
 							<br>
@@ -853,7 +853,7 @@
 						</aside>
 					</section>
 					<section>
-						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/v-html-pzx70?file=/index.html" frameborder="0"></iframe>
+						<iframe data-autoplay width=100%" height="650" data-preload src="https://codesandbox.io/s/v-html-pzx70?file=/index.html" frameborder="0"></iframe>
 						<aside class="notes">
 							然后我们来看一下实际的运行结果。
 							<br>
@@ -1210,7 +1210,7 @@
 							</aside>
 					</section>
 					<section>
-						<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/v-model-zplpv" frameborder="0"></iframe>
+						<iframe data-autoplay width="100%" height="650" data-preload src="https://codesandbox.io/s/v-model-zplpv" frameborder="0"></iframe>
 						<aside class="notes">
 							然后我们来看一个具体的例子。
 							<br>
@@ -1624,7 +1624,7 @@
 					</section>
 				</section>
 				<section data-auto-animate>
-					<iframe data-autoplay width="960" height="650" data-preload src="https://codesandbox.io/s/silly-swanson-rd4vb?file=/src/components/HelloWorld.vue" frameborder="0"></iframe>
+					<iframe data-autoplay width="100%" height="650" data-preload src="https://codesandbox.io/s/silly-swanson-rd4vb?file=/src/components/HelloWorld.vue" frameborder="0"></iframe>
 					<aside class="notes">
 						下面我们再来看一个插槽使用的具体示例。
 						<br>
@@ -1819,7 +1819,39 @@
 						</aside>
 					</section>
 				</section>
-				<section>
+				<section data-auto-animate>
+					<iframe data-autoplay width="100%" height="650" data-preload src="https://codesandbox.io/s/eager-oskar-pc7jg?file=/src/mixin.js" frameborder="0"></iframe>
+					<aside class="notes">
+						这里我们再来看一个mixin 在实际开发场景下的应用。
+						<br>
+						<br>
+						在这个示例中我们对发起网络请求的处理进行了封装，因为在现实场景中对网络数据状态的处理会比较复杂和繁琐，
+						所以我们希望有统一的方式进行处理。
+						<br>
+						<br>
+						● 比如我们希望在每次请求完成后给用户请求的状态提示，就像这样，在服务端出问题时给出服务器出问题的提示，
+						在返回的数据状态错误时给出数据状态错误的提示，然后在请求成功后给出请求成功的提示。
+						<br>
+						<br>
+						● 具体的我们使用axios库的拦截器功能，来处理网络请求，我们处理了请求超时的情况、数据状态错误的情况、以及服务端错误的情况。
+						<br>
+						● 比如，服务端返回的状态是200，但是dada.status 为0的话可能我们认这个数据也是有问题的，要显示服务端的返回的错误消息。
+						<br>
+						<br>
+						● 然后，如果服务端返回5开头的状态码比如500，或者404，我们认为可能是服务器的问题。
+						<br>然后状态码是403的话，可能就是没有权限。
+						<br>最后可能就是网络有问题，请求直接失败了。
+						<br>那我们针对这些情况都要分别给出对应的提示。
+						<br>
+						<br>
+						● 然后代码的最下面，我们通过一个全局的混入将我们处理之后的 ajax 方法，提供给了所有的Vue实例。
+						<br>
+						<br>
+						● 紧接着我们在组件中就可以不再引入任何依赖，直接使用我们的 ajax 方法，然后都可以直接复用我们封装的处理逻辑。
+						这种处理在我们实际的开发中也是一个非常实用的技巧。
+					</aside>
+				</section>
+				<!-- <section>
 					<h2 class='code-title' data-id="code-title">选项合并</h2>
 					<section data-auto-animate>
 						<ul>
@@ -1954,7 +1986,7 @@
 							● 最后执行的结果就是foo 和 bar 都可以调用，而conflicting函数的执行结果与组件内定义的一致。
 						</aside>
 					</section>
-				</section>
+				</section> -->
 				<section>
 					<h2>课程大纲</h2>
 					<div style="font-size: 40px; margin: 60px 0 0 300px; text-align: left;">
@@ -2213,7 +2245,7 @@
 				hash: true,
 				history: true,
 				preloadIframes: true,
-				width: 960,
+				width: 1260,
 				height: 700,
 				// controlsLayout: 'edges',
 				// Learn about plugins: https://revealjs.com/plugins/
