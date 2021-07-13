@@ -219,7 +219,9 @@
 						<aside class="notes">
 							这个就是实际渲染结果的一个展示，可以看到Hello Vue已经被渲染出来了。
 							<br>
-							如果我修改data的话，可以看到渲染结果也会相应的变化。
+							<br>
+							就用这些非常简单的代码就可以使用Vue了，Hello Vue!的文本就是从message这里获取的。
+							<br>
 							<br>
 							从这里我们可以看到，使用Vue的话其实就是在new一个Vue的实例。
 						</aside>
@@ -228,15 +230,19 @@
 				<section>
 					<h2 class='code-title' data-id="code-title">el 和 template 选项</h2>
 					<pre data-id="code-animation">
-						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|3-4|6|7|">
+						<code class="hljs language-javascript" data-noescape data-trim data-line-numbers="|1|4-5|8-9|10-11|">
 							<script type="text/template">
-								// <div id="#app">Hello Vue</div>
+								<div id="#app">Hello Vue</div>
+
 								const vm = new Vue({
 									el: '#app',
 									template: '<div class="empty"></div>'
 								})
-								// beforeMount: this.$el === document.querySelector('#app')
-								// mounted: vm.$el.outerHTML === '<div class="empty"></div>'
+
+								// beforeMount: 
+								this.$el === document.querySelector('#app')
+								// mounted: 
+								vm.$el.outerHTML === '<div class="empty"></div>'
 							</script>
 						</code>
 					</pre>
@@ -257,9 +263,8 @@
 						● 接下来从Vue的实例中我们可以拿到$el属性，就是Vue的真实Dom节点。我们会发现在Vue 的dom真正挂载前，$el等价于querySelector拿到的app节点。
 						<br>
 						<br>
-						● 而在Vue dom挂载之后后$el将变成新的通过template模板渲染的节点。
+						● 而在Vue dom挂载之后，$el将变成新的通过template模板渲染的节点。
 						<br>
-						说明Vue会用template生成的dom节点来替换element选项提供的挂载点。
 					</aside>
 				</section>
 				<section>
@@ -301,7 +306,9 @@
 						<br>
 						当一个 Vue 实例被创建时，它会将 data 对象中的所有的 property 加入到 Vue 的响应式系统中。当这些 property 的值发生改变时，视图将会产生“响应”。
 						<br>
-						data选项可以接受一个对象或者一个函数，推荐使用函数的方式返回data对象。
+						<br>
+						data选项可以接受一个对象或者一个函数，推荐使用函数返回data对象的方式。
+						<br>
 						<br>
 						直接为data传入一个对象会导致多个Vue实例之间的数据相互影响，可能会产生问题。
 						<br>
@@ -540,7 +547,7 @@
 							这是Vue官方的一个关于生命周期的图示，可以帮助我们理解。
 							<br>
 							<br>
-							● 我们一起来看一下，首先是beforeCreate，可以看到这个钩子是在Vue初始化完成之前触发，此时仅完成了时间和生命周期本身的初始化。
+							● 我们一起来看一下，首先是beforeCreate，可以看到这个钩子是在Vue初始化完成之前触发，此时仅完成了事件和生命周期本身的初始化。
 							<br>
 							而Vue的data还没有初始化，dom树也没有生成，所以此时是拿不到data里定义的属性的。
 							<br>
@@ -550,17 +557,17 @@
 							这个钩子一般用来提前进行一些数据操作，比如发起一个ajax请求，这样可以尽早发起请求，提升页面的响应速度。
 							<br>
 							<br>
-							● 接下来就是beforeMount，在图中我们可以看到此时的Vue Dom已经完成初始化，但是还没有真正挂载，
-							并且我们可以看到vue会首先使用template选项作为模板进行编译，如果没有template选项就会寻找element选项指定
-							的元素的outerHTML作为模板。
+							● 接下来就是beforeMount，在图中我们可以看到此时的Vue Dom已经完成初始化，但是还没有真正挂载。
 						</aside>
 					</section>
 					<section data-background="assets/lifecycle.png" data-background-size="35%" data-background-position="50% 85%">
 						<aside class="notes">
 							● 紧接着就是mounted，这个是Vue里最常用到的钩子，此时Vue dom已经被真正挂载到了页面的dom tree上。
+							一般我们的业务逻辑都在这个钩子之后进行处理。
+							<br>
 							<br>
 							但是 mounted 不会保证所有的子组件也都一起被挂载。如果你希望等到整个视图都渲染完毕，还需要在 mounted 内部使用 vm.$nextTick函数。
-							这个函数可以解决一些获取不到dom元素的问题。
+							这个函数可以解决一些获取不到子组件dom元素的问题。
 							<br>
 							<br>
 							● 然后是beforeUpdate和updated，分别在Virtual Dom重新计算并触发页面更新的之前和之后触发。
@@ -584,10 +591,10 @@
 							</li>
 						</ol>
 						<aside class="notes">
-							好，在第一个小节的最后，我们再来了解一下Vue的响应式原理，了解原理有助于我们接下来更好的理解Vue，以及在遇到问题时更好的解决问题。
+							好，在第一个小节的最后，我们再来深入了解一下Vue的响应式原理，了解原理有助于我们接下来更好的理解Vue，以及在遇到问题时更好的解决问题。
 							<br>
 							<br>
-							● 主要原理就是两点，首先Vue会遍历data选项中的所有属性，并使用Object.defineProperty为所有属性都添加getter和setter。
+							● Vue的响应式原理主要就是两点，首先Vue会遍历data选项中的所有属性，并使用Object.defineProperty为所有属性都添加getter和setter。
 							<br>
 							<br>
 							● 然后添加的getter和setter会分别在取值和设置值的时候进行依赖收集和触发响应式更新。
@@ -605,7 +612,7 @@
 							● getter函数会将数据与模板之间的依赖关系进行绑定并告诉蓝色的Watcher模块完成依赖收集。
 							<br>
 							<br>
-							● 然后在data变化后会触发setter函数，setter函数会将变化的数据通知给Watcher模块，
+							● 然后在data变化后会触发setter函数，setter函数会将变化的数据通知给Watcher模块。
 							<br>
 							<br>
 							● 然后Watcher模块会查找数据与模板之间的依赖关系，并触发对应模板的重新渲染。
@@ -670,13 +677,13 @@
 							● 而setter会在数据被修改时通知观察者对象触发模板响应式更新。
 							<br>
 							<br>
-							● 最后我们也像Vue一样在实例上挂载一个$data属性
+							● 最后我们也像Vue一样在实例上挂载一个$data属性，值就是data本身。
 							<br>
 							<br>
 							这些就是Vue响应式处理的基本原理，非常简单，相信大家都能够理解。
 							<br>
 							<br>
-							最后完整的代码在这下面有链接，大家感兴趣的话可以查看完整的代码合运行的效果，刚才只演示了一部分的关键代码。
+							最后完整的代码在这下面有链接，大家感兴趣的话可以查看完整的代码和运行的效果，刚才只演示了一部分的关键代码。
 						</aside>
 					</section>
 				</section>
@@ -782,7 +789,9 @@
 							<br>
 							<br>
 							● 对于数组长度的修改，我们可以使用splice这个突变方法来直接修改原数组，触发响应式更新。
-
+							<br>
+							<br>
+							这些就是Vue触发响应式更新时的一些要特殊处理的case，大家在遇到这些情况时要使用正确的方法来处理。
 						</aside>
 					</section>
 				</section>
@@ -900,18 +909,24 @@
 						<aside class="notes">
 							接下来是v-show和v-if，他们都是用来控制元素的显示和隐藏的。
 							<br>
+							<br>
 							也都是在指令之后设置一个变量。
 							<br>
 							<br>
 							然后下面是他们的输出，左边是ok为true时他们的输出，表现是一样的。
 							<br>
+							<br>
 							右边是当ok为false时他们的输出，可以看到差异就在于：
+							<br>
 							<br>
 							v-show元素在隐藏时元素本身是不会被销毁的，仅仅通过display:none去隐藏他。
 							<br>
+							<br>
 							而v-if的元素是会销毁的，而且会在被销毁的位置以一个comment元素来占位。
 							<br>
+							<br>
 							因此v-if在进行切换时会有更高的开销，而v-show 由于不管初始条件是什么，元素总是会被渲染，所以会有更高的初始渲染开销。
+							<br>
 							<br>
 							所以如果需要非常频繁地进行切换，那么使用 v-show 比较好；而如果在运行时条件很少改变，那么使用 v-if 比较好。
 						</aside>
@@ -2118,7 +2133,7 @@
 						● 还有就是全局的混入。
 						<br>
 						<br>
-						● 以及添加一个实例的方法。
+						● 以及添加一个实例的方法，我们刚才的封装的ajax方法也可以使用这种方式挂载，就是直接挂载在Vue 的 prototype 原型上。
 					</aside>
 				</section>
 				<section>
@@ -2159,9 +2174,12 @@
 					<aside class="notes">
 						好，然后现在到了我们本节课的最后一部分了，也是Vue中最具特色的一个特性，就是单文件组件，这个方式也是使用Vue的最常见的方式，主要是整体提升了Vue的工程化能力。
 						<br>
+						<br>
 						在之前的很多示例中，我们使用 Vue.component 来定义全局组件，紧接着用 new Vue({ el: '#container '}) 在每个页面内指定一个容器元素。
-
-						这种方式在很多中小规模的项目中运作的很好，在这些项目里 JavaScript 只被用来加强特定的视图。但当在更复杂的项目中，或者你的前端完全由 JavaScript 驱动的时候，有一些缺点就会变得非常明显：
+						<br>
+						<br>
+						这种方式在很多中小规模的项目中运作的很好，但在更复杂的实际项目中，有一些缺点就会变得非常明显：
+						<br>
 						<br>
 						● 全局定义 (Global definitions) 强制要求每个 component 中的命名不得重复。
 						<br>
@@ -2171,7 +2189,7 @@
 						<br>
 						● 没有构建步骤 (No build step) 限制只能使用 HTML 和 ES5 JavaScript，而不能使用预处理器，如 Babel。
 						<br>
-						文件扩展名为 .vue 的 single-file components (单文件组件) 为以上所有问题提供了解决方法，并且还可以使用 webpack 等构建工具。
+						文件扩展名为 .vue 的 单文件组件为以上问题提供了解决方法，并且还可以使用 webpack 等构建工具。
 						<br>
 						<br>
 						● 我们可以来看一下这个文件名叫做 Hello.vue 的简单示例。
